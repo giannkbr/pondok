@@ -99,31 +99,38 @@ class Siswa extends CI_Controller
     //midtrans
     public function token($id)
     {
+<<<<<<< Updated upstream
     
+=======
+        $data = $this->db->get('siswa')->result();
+
+        foreach ($data as $key) {
+
+        
+>>>>>>> Stashed changes
         // Required
         $transaction_details = array(
             'order_id' => rand(),
-          'gross_amount' => 94000, // no decimal allowed for creditcard
+          'gross_amount' => 18000, // no decimal allowed for creditcard
         );
 
         // Optional
         $item1_details = array(
             'id' => 'a1',
             'price' => 18000,
+<<<<<<< Updated upstream
             'quantity' => 3,
             'name' => 'apple'
+=======
+            'quantity' => 1,
+            'name' => $key->nama
+>>>>>>> Stashed changes
         );
 
-        // Optional
-        $item2_details = array(
-            'id' => 'a2',
-            'price' => 20000,
-            'quantity' => 2,
-            'name' => "Orange"
-        );
+        }
 
         // Optional
-        $item_details = array ($item1_details, $item2_details);
+        $item_details = array ($item1_details);
 
         // Optional
         $billing_address = array(
