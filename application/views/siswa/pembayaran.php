@@ -114,11 +114,14 @@
 								<div class="table-responsive">
 									<?php
 
-                                foreach ($siswa as $u) {
+                               foreach ($siswa as $a) {
                                     ?>
-									<?php
+                                    <h3 id="nama" name="nama" align="center" class="card-title" style="color: black;"><?php echo $a->nama ?>
+                                        </h1>
+                                        <?php
                                 }
                                 ?>
+
 									<table id="example" class="table align-items-center table-flush">
 										<thead class="thead-light">
 											<tr class="text-center">
@@ -134,24 +137,24 @@
 										<tbody>
 											<?php
 
-                                foreach ($siswa as $u) {
+                                foreach ($spp as $u) {
                                     ?>
 											<tr class="text-center">
 
-												<td>
-													Januari
+												<td >
+													<?php echo $u->bulan ?>
 												</td>
 
 												<td>
-													2020
+													<?php echo $u->tahun ?>
 												</td>
 
 												<td>
-													tanggal
+													-
 												</td>
 
-												<td>
-													jumlah
+												<td id="jumlah" name="jumlah">
+													<?php echo $u->jumlah ?>
 												</td>
 
 												<td>
@@ -245,8 +248,15 @@
 			event.preventDefault();
 			$(this).attr("disabled", "disabled");
 
+            var jumlah = $('#jumlah').val();
+
+
 			$.ajax({
+                type: 'POST',
 				url: '<?=site_url()?>/siswa/token',
+                data: {
+                    jumlah: jumlah,
+                },
 				cache: false,
 
 				success: function (data) {
@@ -289,5 +299,6 @@
 
 	</script>
 </body>
+
 
 </html>

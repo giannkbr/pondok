@@ -140,24 +140,24 @@
 											<tbody>
 												<?php
 
-                                foreach ($user as $u) {
+                                foreach ($spp as $u) {
                                     ?>
 												<tr class="text-center">
 
 													<td>
-														Januari
+														<?php echo $u->bulan ?>
 													</td>
 
 													<td>
-														2020
+														<?php echo $u->tahun ?>
 													</td>
 
 													<td>
-														tanggal
+														-
 													</td>
 
 													<td>
-														jumlah
+														<?php echo $u->jumlah ?>
 													</td>
 
 													<td>

@@ -93,32 +93,34 @@ class Siswa extends CI_Controller
             $this->session->userdata('email')])->row_array();
 
         $data['siswa'] = $this->m_siswa->tampil_data()->result();
+        $this->load->model('M_spp');
+        $data['spp'] = $this->db->get_where('admin', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+        $data['spp'] = $this->M_spp->tampil_data()->result();
         $this->load->view('siswa/pembayaran', $data);
     }
 
     //midtrans
     public function token()
     {
-        $data = $this->db->get('siswa')->result();
-
-        foreach ($data as $key) {
+        $jumlah = $this->input->post('jumlah');
 
         
         // Required
         $transaction_details = array(
             'order_id' => rand(),
-          'gross_amount' => 18000, // no decimal allowed for creditcard
+          'gross_amount' => $jumlah// no decimal allowed for creditcard
         );
 
         // Optional
         $item1_details = array(
             'id' => 'a1',
-            'price' => 18000,
+            'price' => $jumlah,
             'quantity' => 1,
-            'name' => $key->nama
+            'name' => "pembayaran spp"
         );
 
-        }
 
         // Optional
         $item_details = array ($item1_details);
