@@ -168,11 +168,6 @@
                                 ?>
 										</tbody>
 									</table>
-									<p class="small font-weight-bold">* Angka 1 menunjukan akun telah aktif sedangkan
-										Angka
-										0 menunjukan akun
-										belum
-										aktif</p>
 								</div>
 							</div>
 						</div>

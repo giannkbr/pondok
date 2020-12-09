@@ -41,10 +41,10 @@
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 							class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 							<img alt="image" style="margin-bottom:4px !important;"
-								src="./assets/stisla-assets/img/avatar/avatar-2.png"
+								src="<?= base_url('assets/') ?>stisla-assets/img/avatar/avatar-2.png"
 								class="rounded-circle mr-1 my-auto border-white">
-                            <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
-                            Hello, <?php
+							<div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
+								Hello, <?php
                             $data['user'] = $this->db->get_where('admin', ['email' =>
                             $this->session->userdata('email')])->row_array();
                             echo $data['user']['username'];

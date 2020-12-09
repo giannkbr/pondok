@@ -215,4 +215,61 @@ class Admin extends CI_Controller
             redirect(base_url('admin/data_guru'));
         }
     }
+
+    // Data SPP
+    public function data_spp()
+    {
+        $this->load->model('M_spp');
+        $data['user'] = $this->db->get_where('admin', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+        $data['user'] = $this->M_spp->tampil_data()->result();
+        $this->load->view('admin/data_spp', $data);
+    }
+
+    public function add_spp()
+    {
+        $this->form_validation->set_rules('bulan', 'Bulan', 'required|trim', [
+            'required' => 'Harap isi kolom bulan.'
+        ]);
+
+        $this->form_validation->set_rules('tahun', 'tahun', 'required|trim', [
+            'required' => 'Harap isi kolom tahun.'
+        ]);
+
+        $this->form_validation->set_rules('jumlah', 'jumlah', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom jumlah.',
+            'min_length' => 'jumlah terlalu pendek.',
+        ]);
+
+        $this->form_validation->set_rules('status', 'status', 'required|trim', [
+            'required' => 'Harap isi kolom status.'
+        ]);
+        
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('spp/registration');
+        } else {
+            $data = [
+                'bulan' => htmlspecialchars($this->input->post('bulan', true)),
+                'tahun' => htmlspecialchars($this->input->post('tahun', true)),
+                'jumlah' => htmlspecialchars($this->input->post('jumlah', true)),
+                'status' => htmlspecialchars($this->input->post('status', true)),
+            ];
+
+            $this->db->insert('spp', $data);
+
+            $this->session->set_flashdata('success-reg', 'Berhasil!');
+            redirect(base_url('admin/data_spp'));
+        }
+    }
+
+    public function delete_spp($id)
+    {
+        $this->load->model('M_spp');
+        $where = array('id' => $id);
+        $this->M_spp->delete_spp($where, 'spp');
+        $this->session->set_flashdata('user-delete', 'berhasil');
+        redirect('admin/data_spp');
+    }
 }
