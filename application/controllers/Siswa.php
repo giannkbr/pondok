@@ -97,17 +97,13 @@ class Siswa extends CI_Controller
     }
 
     //midtrans
-    public function token($id)
+    public function token()
     {
-<<<<<<< Updated upstream
-    
-=======
         $data = $this->db->get('siswa')->result();
 
         foreach ($data as $key) {
 
         
->>>>>>> Stashed changes
         // Required
         $transaction_details = array(
             'order_id' => rand(),
@@ -118,13 +114,8 @@ class Siswa extends CI_Controller
         $item1_details = array(
             'id' => 'a1',
             'price' => 18000,
-<<<<<<< Updated upstream
-            'quantity' => 3,
-            'name' => 'apple'
-=======
             'quantity' => 1,
             'name' => $key->nama
->>>>>>> Stashed changes
         );
 
         }
