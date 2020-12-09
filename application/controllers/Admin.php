@@ -100,7 +100,7 @@ class Admin extends CI_Controller
         redirect('admin/data_siswa');
     }
 
-        public function pembayaran_siswa()
+    public function pembayaran_siswa()
     {
         $this->load->model('m_siswa');
 

@@ -78,44 +78,4 @@ class User extends CI_Controller
             redirect(base_url('welcome/admin'));
         }
     }
-
-    private function _sendEmail($token, $type)
-    {
-        $config = [
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => '',
-            'smtp_pass' => '',
-            'smtp_port' => 465,
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'newline' => "\r\n",
-        ];
-
-        $this->email->initialize($config);
-
-        $data = array(
-            'name' => 'syauqi',
-            'link' => ' ' . base_url() . 'welcome/verify?email=' . $this->input->post('email') . '& token' . urlencode($token) . '"',
-        );
-
-        $this->email->from('', '');
-        $this->email->to($this->input->post('email'));
-
-        if ($type == 'verify') {
-            $link =
-            $this->email->subject('Verifikasi Akun');
-            $body = $this->load->view('template/email-template.php', $data, true);
-            $this->email->message($body);
-        } else {
-        }
-
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die();
-        }
-    }
-
 }

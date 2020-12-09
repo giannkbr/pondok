@@ -29,7 +29,7 @@
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
                         <a href="<?= base_url('welcome') ?>"> <img src="<?= base_url('assets/') ?>/img/logo.png" alt="logo" width="150" class=" mb-5 mt-2"></a>
-                        <h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">Learnify</span>
+                        <h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">SPP Pondok</span>
                         </h4>
                         <p class="text-muted">Sebelum masuk ke halaman siswa, anda harus login terlebih dahulu sebagai
                             siswa. silahkan isi data dibawah untuk melanjutkan.</p>
@@ -68,7 +68,6 @@
                                     masuk ke
                                     halaman siswa.</h5>
                             </div>
-                            Made with <span class="text-danger"> &#10084;</span> by <a class="text-light bb" target="_blank" href="https://syauqizaidan.github.io/">Syaauqi Zaaidan</a> - Image by <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
                         </div>
                     </div>
                 </div>
