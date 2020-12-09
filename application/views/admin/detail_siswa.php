@@ -40,7 +40,7 @@
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 							class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 							<img alt="image" style="margin-bottom:4px !important;"
-								src="./assets/stisla-assets/img/avatar/avatar-2.png"
+								src="<?= base_url('assets/') ?>stisla-assets/img/avatar/avatar-2.png"
 								class="rounded-circle mr-1 my-auto border-white">
 							<div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
 								Hello, <?php
@@ -94,6 +94,15 @@
 								<li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a>
 								</li>
 								<li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-header">Management SPP</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
+								<span>Guru</span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="<?= base_url('admin/data_spp') ?>">Data SPP</a>
 								</li>
 							</ul>
 						</li>

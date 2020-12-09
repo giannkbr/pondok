@@ -41,14 +41,14 @@
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 							class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 							<img alt="image" style="margin-bottom:4px !important;"
-								src="./assets/stisla-assets/img/avatar/avatar-2.png"
+								src="<?= base_url('assets/') ?>stisla-assets/img/avatar/avatar-2.png"
 								class="rounded-circle mr-1 my-auto border-white">
 							<div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
 								Hello, <?php
-                $data['user'] = $this->db->get_where('admin', ['email' =>
-                    $this->session->userdata('email')])->row_array();
-                echo $data['user']['username'];
-                ?></div>
+                            $data['user'] = $this->db->get_where('admin', ['email' =>
+                            $this->session->userdata('email')])->row_array();
+                            echo $data['user']['username'];
+                            ?></div>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<div class="dropdown-title">Admin - SPPP</div>
@@ -61,139 +61,149 @@
 			</nav>
 			<div class="main-sidebar">
 				<aside id="sidebar-wrapper">
-					<div>
-						<a href="<?= base_url('admin') ?>"
-							style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
-							class="text-primary text-center"><i style="font-size: 20px;"
-								class="fas fa-graduation-cap"></i> |
-							SPP Pondok</a>
+					<div class="sidebar-brand text-primary">
+						<div>
+							<a href="<?= base_url('admin') ?>"
+								style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
+								class="text-primary text-center"><i style="font-size: 20px;"
+									class="fas fa-graduation-cap"></i> |
+								SPP Pondok</a>
+						</div>
 					</div>
-			</div>
-			<div class="sidebar-brand sidebar-brand-sm">
-				<a href="<?= base_url('admin') ?>">SPPP</a>
-			</div>
-			<ul class="sidebar-menu">
-				<li class="menu-header ">Dashboard</li>
-				<li class="nav-item dropdown active">
-					<a href="<?= base_url('admin') ?>" class="nav-link"><i
-							class="fas fa-desktop"></i><span>Dashboard</span></a>
-				</li>
-				<li class="menu-header">Management Siswa</li>
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
-						<span>Siswa</span></a>
-					<ul class="dropdown-menu">
-						<li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
-					</ul>
-				</li>
-				<li class="menu-header">Management Guru</li>
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
-						<span>Guru</span></a>
-					<ul class="dropdown-menu">
-						<li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a>
+					<div class="sidebar-brand sidebar-brand-sm">
+						<a href="<?= base_url('admin') ?>">SPPP</a>
+					</div>
+					<ul class="sidebar-menu">
+						<li class="menu-header ">Dashboard</li>
+						<li class="nav-item dropdown active">
+							<a href="<?= base_url('admin') ?>" class="nav-link"><i
+									class="fas fa-desktop"></i><span>Dashboard</span></a>
 						</li>
-						<li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
+						<li class="menu-header">Management Siswa</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
+								<span>Siswa</span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
+							</ul>
 						</li>
-					</ul>
-				</li>
+						<li class="menu-header">Management Guru</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
+								<span>Guru</span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a>
+								</li>
+								<li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-header">Management SPP</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
+								<span>Guru</span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="<?= base_url('admin/data_spp') ?>">Data SPP</a>
+								</li>
+							</ul>
+						</li>
 				</aside>
-		</div>
-		<!-- End Sidebar -->
+			</div>
+			<!-- End Sidebar -->
 
-		<!-- Main Content -->
-		<div class="main-content">
-			<section class="section">
-				<div class="card">
-					<div class="card-body">
-						<h2 class="card-title" style="color: black;">Management Data Siswa Pondok</h2>
-						<a href="<?= base_url('siswa/registration') ?>" class="btn btn-primary">Tambah
-							Data Siswa ⭢ </a>
+			<!-- Main Content -->
+			<div class="main-content">
+				<section class="section">
+					<div class="card">
+						<div class="card-body">
+							<h2 class="card-title" style="color: black;">Management Data Siswa Pondok</h2>
+							<a href="<?= base_url('siswa/registration') ?>" class="btn btn-primary">Tambah
+								Data Siswa ⭢ </a>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="bg-white p-4"
-							style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-							<div class="table-responsive">
-								<table id="example" class="table align-items-center table-flush">
-									<thead class="thead-light">
-										<tr class="text-center">
-											<th scope="col">ID</th>
-											<th scope="col">Nama Siswa</th>
-											<th scope="col">Email</th>
-											<th scope="col">Gambar</th>
-											<th scope="col">Akun Aktif *</th>
-											<th scope="col">Detail</th>
-											<th scope="col">Pembayaran</th>
-											<th scope="col">Option</th>
-										</tr>
-									</thead>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="bg-white p-4"
+								style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
+								<div class="table-responsive">
+									<table id="example" class="table align-items-center table-flush">
+										<thead class="thead-light">
+											<tr class="text-center">
+												<th scope="col">ID</th>
+												<th scope="col">Nama Siswa</th>
+												<th scope="col">Email</th>
+												<th scope="col">Gambar</th>
+												<th scope="col">Akun Aktif *</th>
+												<th scope="col">Detail</th>
+												<th scope="col">Pembayaran</th>
+												<th scope="col">Option</th>
+											</tr>
+										</thead>
 
-									<tbody>
-										<?php
+										<tbody>
+											<?php
 
                                 foreach ($user as $u) {
                                     ?>
-										<tr class="text-center">
+											<tr class="text-center">
 
-											<th scope="row">
-												<?php echo $u->id ?>
-											</th>
+												<th scope="row">
+													<?php echo $u->id ?>
+												</th>
 
-											<td>
-												<?php echo $u->nama ?>
-											</td>
+												<td>
+													<?php echo $u->nama ?>
+												</td>
 
-											<td>
-												<?php echo $u->email ?>
-											</td>
+												<td>
+													<?php echo $u->email ?>
+												</td>
 
-											<td>
-												<img height="20px"
-													src="<?= base_url() . 'assets/profile_picture/' . $u->image; ?>">
-											</td>
+												<td>
+													<img height="20px"
+														src="<?= base_url() . 'assets/profile_picture/' . $u->image; ?>">
+												</td>
 
-											<td>
-												<?php echo $u->is_active ?>
-											</td>
+												<td>
+													<?php echo $u->is_active ?>
+												</td>
 
-											<td class="text-center">
-												<a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>"
-													class="btn btn-primary">Detail ⭢</a>
-											</td>
+												<td class="text-center">
+													<a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>"
+														class="btn btn-primary">Detail ⭢</a>
+												</td>
 
-											<td class="text-center">
-												<a href="<?php echo site_url('admin/pembayaran_siswa/' . $u->id); ?>"
-													class="btn btn-primary">Pembayaran ⭢</a>
-											</td>
+												<td class="text-center">
+													<a href="<?php echo site_url('admin/pembayaran_siswa/' . $u->id); ?>"
+														class="btn btn-primary">Pembayaran ⭢</a>
+												</td>
 
-											<td class="text-center">
-												<a href="<?php echo site_url('admin/update_siswa/' . $u->id); ?>"
-													class="btn btn-info">Update ⭢</a>
+												<td class="text-center">
+													<a href="<?php echo site_url('admin/update_siswa/' . $u->id); ?>"
+														class="btn btn-info">Update ⭢</a>
 
-												<a href="<?php echo site_url('admin/delete_siswa/' . $u->id); ?>"
-													class="btn btn-danger remove">Delete ✖</a>
-											</td>
+													<a href="<?php echo site_url('admin/delete_siswa/' . $u->id); ?>"
+														class="btn btn-danger remove">Delete ✖</a>
+												</td>
 
-										</tr>
-										<?php
+											</tr>
+											<?php
                                 }
                                 ?>
-									</tbody>
-								</table>
-								<p class="small font-weight-bold">* Angka 1 menunjukan akun telah aktif sedangkan
-									Angka
-									0 menunjukan akun
-									belum
-									aktif</p>
+										</tbody>
+									</table>
+									<p class="small font-weight-bold">* Angka 1 menunjukan akun telah aktif sedangkan
+										Angka
+										0 menunjukan akun
+										belum
+										aktif</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
-	</div>
 	</div>
 	<!-- End Main Content -->
 

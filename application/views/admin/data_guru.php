@@ -98,6 +98,15 @@
 								</li>
 							</ul>
 						</li>
+						<li class="menu-header">Management SPP</li>
+						<li class="nav-item dropdown">
+							<a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
+								<span>Guru</span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="<?= base_url('admin/data_spp') ?>">Data SPP</a>
+								</li>
+							</ul>
+						</li>
 				</aside>
 			</div>
 			<!-- End Sidebar -->
