@@ -42,7 +42,7 @@
                             Hello, <?php
                             $data['siswa'] = $this->db->get_where('siswa', ['email' =>
                             $this->session->userdata('email')])->row_array();
-                            echo $data['siswa']['username'];
+                            echo $data['siswa']['nama'];
                             ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -77,20 +77,9 @@
                         <li class="menu-header">Management Siswa</li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
-                                <span>Siswa</span></a>
+                                <span>Data</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-header">Management Guru</li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
-                                <span>Guru</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a>
-                                </li>
-                                <li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
-                                </li>
+                                <li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Pembayaran</a></li>
                             </ul>
                         </li>
                 </aside>

@@ -76,4 +76,15 @@ class Siswa extends CI_Controller
             redirect(base_url('welcome/admin'));
         }
     }
+
+     public function pembayaran()
+    {
+        $this->load->model('m_siswa');
+
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+        $data['user'] = $this->m_siswa->tampil_data()->result();
+        $this->load->view('siswa/pembayaran', $data);
+    }
 }
