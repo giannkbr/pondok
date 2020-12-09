@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Siswa extends CI_Controller
 {
     public function __construct()
     {
@@ -77,5 +77,16 @@ class User extends CI_Controller
             $this->session->set_flashdata('success-reg', 'Berhasil!');
             redirect(base_url('welcome/admin'));
         }
+    }
+
+     public function pembayaran()
+    {
+        $this->load->model('m_siswa');
+
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+        $data['user'] = $this->m_siswa->tampil_data()->result();
+        $this->load->view('siswa/pembayaran', $data);
     }
 }

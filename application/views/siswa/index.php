@@ -40,7 +40,7 @@
                                 class="rounded-circle mr-1 my-auto border-white">
                             <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
                             Hello, <?php
-                            $data['user'] = $this->db->get_where('admin', ['email' =>
+                            $data['user'] = $this->db->get_where('siswa', ['email' =>
                             $this->session->userdata('email')])->row_array();
                             echo $data['user']['username'];
                             ?></div>
@@ -58,7 +58,7 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand text-primary">
                         <div>
-                            <a href="<?= base_url('admin') ?>"
+                            <a href="<?= base_url('siswa') ?>"
                                 style="font-size: 30px;font-weight:900;font-family: 'Poppins', sans-serif;"
                                 class="text-primary text-center"><i style="font-size: 30px;"
                                     class="fas fa-graduation-cap"></i> |
@@ -77,20 +77,9 @@
                         <li class="menu-header">Management Siswa</li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
-                                <span>Siswa</span></a>
+                                <span>Data</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-header">Management Guru</li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
-                                <span>Guru</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a>
-                                </li>
-                                <li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
-                                </li>
+                                <li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Pembayaran</a></li>
                             </ul>
                         </li>
                 </aside>
