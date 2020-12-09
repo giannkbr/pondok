@@ -38,8 +38,8 @@
 							<img alt="image" style="margin-bottom:4px !important;"
 								src="./assets/stisla-assets/img/avatar/avatar-2.png"
 								class="rounded-circle mr-1 my-auto border-white">
-                            <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
-                            Hello, <?php
+							<div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
+								Hello, <?php
                             $data['user'] = $this->db->get_where('admin', ['email' =>
                             $this->session->userdata('email')])->row_array();
                             echo $data['user']['username'];
@@ -59,8 +59,8 @@
 					<div class="sidebar-brand text-primary">
 						<div>
 							<a href="<?= base_url('admin') ?>"
-								style="font-size: 30px;font-weight:900;font-family: 'Poppins', sans-serif;"
-								class="text-primary text-center"><i style="font-size: 30px;"
+								style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
+								class="text-primary text-center"><i style="font-size: 20px;"
 									class="fas fa-graduation-cap"></i> |
 								SPP Pondok</a>
 						</div>

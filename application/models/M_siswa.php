@@ -29,4 +29,11 @@ class M_siswa extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    function test()
+	{
+		# code...
+		$query = $this->db->get('siswa');
+		return $query->row();
+	}
 }

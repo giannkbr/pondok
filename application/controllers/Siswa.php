@@ -97,9 +97,9 @@ class Siswa extends CI_Controller
     }
 
     //midtrans
-    public function token()
+    public function token($id)
     {
-        
+    
         // Required
         $transaction_details = array(
             'order_id' => rand(),
@@ -111,7 +111,7 @@ class Siswa extends CI_Controller
             'id' => 'a1',
             'price' => 18000,
             'quantity' => 3,
-            'name' => "Apple"
+            'name' => 'apple'
         );
 
         // Optional
