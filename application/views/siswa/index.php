@@ -40,9 +40,13 @@
                                 class="rounded-circle mr-1 my-auto border-white">
                             <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
                             Hello, <?php
+<<<<<<< HEAD
                             $data['user'] = $this->db->get_where('siswa', ['email' =>
+=======
+                            $data['siswa'] = $this->db->get_where('siswa', ['email' =>
+>>>>>>> 093104d026a3cfdeb6e884474dbaf4486ff3ff59
                             $this->session->userdata('email')])->row_array();
-                            echo $data['user']['username'];
+                            echo $data['siswa']['username'];
                             ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

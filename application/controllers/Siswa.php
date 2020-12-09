@@ -14,7 +14,7 @@ class Siswa extends CI_Controller
 
     public function index()
     {
-        $data['user'] = $this->db->get_where('siswa', ['email' =>
+        $data['siswa'] = $this->db->get_where('siswa', ['email' =>
             $this->session->userdata('email')])->row_array();
 
         $this->load->view('siswa/index');
@@ -46,9 +46,7 @@ class Siswa extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('template/nav');
-            $this->load->view('user/registration');
-            $this->load->view('template/footer');
+            $this->load->view('siswa/registration');
         } else {
             $email = $this->input->post('email', true);
             $data = [
