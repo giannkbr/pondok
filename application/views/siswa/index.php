@@ -58,9 +58,9 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand text-primary">
                         <div>
-                            <a href="<?= base_url('admin') ?>"
-                                style="font-size: 30px;font-weight:900;font-family: 'Poppins', sans-serif;"
-                                class="text-primary text-center"><i style="font-size: 30px;"
+                            <a href="<?= base_url('siswa') ?>"
+                                style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
+                                class="text-primary text-center"><i style="font-size: 20px;"
                                     class="fas fa-graduation-cap"></i> |
                                 SPP Pondok</a>
                         </div>
