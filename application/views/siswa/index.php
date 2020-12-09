@@ -71,7 +71,7 @@
                     <ul class="sidebar-menu">
                         <li class="menu-header ">Dashboard</li>
                         <li class="nav-item dropdown active">
-                            <a href="<?= base_url('admin') ?>" class="nav-link"><i
+                            <a href="<?= base_url('siswa') ?>" class="nav-link"><i
                                     class="fas fa-desktop"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Management Siswa</li>

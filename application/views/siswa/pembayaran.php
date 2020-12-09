@@ -18,10 +18,18 @@
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
+     <script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key='SB-Mid-client-jHxslxRXswoIsdzd'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 </head>
 
 <body>
+    <form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
+      <input type="hidden" name="result_type" id="result-type" value=""></div>
+      <input type="hidden" name="result_data" id="result-data" value=""></div>
+    </form>
 
     <!-- Start Sidebar -->
     <div id="app">
@@ -45,7 +53,7 @@
                 Hello, <?php
                 $data['siswa'] = $this->db->get_where('siswa', ['email' =>
                     $this->session->userdata('email')])->row_array();
-                echo $data['siswa']['name'];
+                echo $data['siswa']['nama'];
                 ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -115,7 +123,7 @@
                     <div class="table-responsive">
                          <?php
 
-                                foreach ($user as $u) {
+                                foreach ($siswa as $u) {
                                     ?>
                 <h3 align="center" class="card-title" style="color: black;"><?php echo $u->nama ?></h1>
                     <?php
@@ -129,14 +137,14 @@
                                     <th scope="col">Tanggal Pembayaran</th>
                                     <th scope="col">Jumlah Pembayaran</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Detail</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <?php
 
-                                foreach ($user as $u) {
+                                foreach ($siswa as $u) {
                                     ?>
                                     <tr class="text-center">
 
@@ -159,7 +167,7 @@
                                         <td><div class="badge badge-success">Completed</div></td>
 
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>" class="btn btn-primary">detail ⭢</a>
+                                            <button id="pay-button" class="btn btn-primary">Bayar ⭢</button>
                                         </td>
 
                                     </tr>
@@ -239,6 +247,55 @@
 <!-- Template JS File -->
 <script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 <script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
+<script type="text/javascript">
+  
+    $('#pay-button').click(function (event) {
+      event.preventDefault();
+      $(this).attr("disabled", "disabled");
+    
+    $.ajax({
+      url: '<?=site_url()?>/siswa/token',
+      cache: false,
+
+      success: function(data) {
+        //location = data;
+
+        console.log('token = '+data);
+        
+        var resultType = document.getElementById('result-type');
+        var resultData = document.getElementById('result-data');
+
+        function changeResult(type,data){
+          $("#result-type").val(type);
+          $("#result-data").val(JSON.stringify(data));
+          //resultType.innerHTML = type;
+          //resultData.innerHTML = JSON.stringify(data);
+        }
+
+        snap.pay(data, {
+          
+          onSuccess: function(result){
+            changeResult('success', result);
+            console.log(result.status_message);
+            console.log(result);
+            $("#payment-form").submit();
+          },
+          onPending: function(result){
+            changeResult('pending', result);
+            console.log(result.status_message);
+            $("#payment-form").submit();
+          },
+          onError: function(result){
+            changeResult('error', result);
+            console.log(result.status_message);
+            $("#payment-form").submit();
+          }
+        });
+      }
+    });
+  });
+
+  </script>
 </body>
 
 </html>
