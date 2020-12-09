@@ -17,12 +17,12 @@ class User extends CI_Controller
         $data['user'] = $this->db->get_where('siswa', ['email' =>
             $this->session->userdata('email')])->row_array();
 
-        $this->load->view('user/index');
+        $this->load->view('siswa/index');
     }
 
     public function registration()
     {
-        $this->load->view('user/registration');
+        $this->load->view('siswa/registration');
     }
 
     public function registration_act()

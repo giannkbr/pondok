@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Siswa - SPP Pondok</title>
+    <title>Data Pembayaran Siswa - SPP Pondok</title>
     <!-- General CSS Files -->
     <link rel="icon" href="<?= base_url('assets/') ?>img/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
@@ -105,26 +105,31 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title" style="color: black;">Management Data Siswa Pondok</h2>
-                <a href="<?= base_url('siswa/registration') ?>" class="btn btn-primary">Tambah
-                Data Siswa ⭢ </a>
+                <h2 class="card-title" style="color: black;">Management Data Pembayaran Siswa Pondok</h2>
+               
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="bg-white p-4" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
                     <div class="table-responsive">
+                         <?php
+
+                                foreach ($user as $u) {
+                                    ?>
+                <h3 align="center" class="card-title" style="color: black;"><?php echo $u->nama ?></h1>
+                    <?php
+                                }
+                                ?>
                         <table id="example" class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr class="text-center">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nama Siswa</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Gambar</th>
-                                    <th scope="col">Akun Aktif *</th>
+                                    <th scope="col">Bulan</th>
+                                    <th scope="col">Tahun</th>
+                                    <th scope="col">Tanggal Pembayaran</th>
+                                    <th scope="col">Jumlah Pembayaran</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Detail</th>
-                                    <th scope="col">Pembayaran</th>
-                                    <th scope="col">Option</th>
                                 </tr>
                             </thead>
 
@@ -135,38 +140,26 @@
                                     ?>
                                     <tr class="text-center">
 
-                                        <th scope="row">
-                                            <?php echo $u->id ?>
-                                        </th>
-
                                         <td>
-                                            <?php echo $u->nama ?>
+                                            Januari
                                         </td>
 
                                         <td>
-                                            <?php echo $u->email ?>
+                                            2020
                                         </td>
 
                                         <td>
-                                            <img height="20px" src="<?= base_url() . 'assets/profile_picture/' . $u->image; ?>">
+                                          tanggal  
                                         </td>
 
                                         <td>
-                                            <?php echo $u->is_active ?>
+                                            jumlah
                                         </td>
+
+                                        <td><div class="badge badge-success">Completed</div></td>
 
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>" class="btn btn-primary">Detail ⭢</a>
-                                        </td>
-
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('admin/pembayaran_siswa/' . $u->id); ?>" class="btn btn-primary">Pembayaran ⭢</a>
-                                        </td>
-
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('admin/update_siswa/' . $u->id); ?>" class="btn btn-info">Update ⭢</a>
-
-                                            <a href="<?php echo site_url('admin/delete_siswa/' . $u->id); ?>" class="btn btn-danger remove">Delete ✖</a>
+                                            <a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>" class="btn btn-primary">detail ⭢</a>
                                         </td>
 
                                     </tr>

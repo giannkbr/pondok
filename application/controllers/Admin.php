@@ -100,6 +100,17 @@ class Admin extends CI_Controller
         redirect('admin/data_siswa');
     }
 
+        public function pembayaran_siswa()
+    {
+        $this->load->model('m_siswa');
+
+        $data['user'] = $this->db->get_where('admin', ['email' =>
+            $this->session->userdata('email')])->row_array();
+
+        $data['user'] = $this->m_siswa->tampil_data()->result();
+        $this->load->view('admin/pembayaran_siswa', $data);
+    }
+
     // manajemen guru
 
     public function data_guru()

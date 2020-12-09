@@ -199,6 +199,53 @@ class Welcome extends CI_Controller
         }
     }
 
+    //siswa
+    public function siswa()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
+            'required' => 'Harap isi bidang email!',
+            'valid_email' => 'Email tidak valid!',
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'trim|required', [
+            'required' => 'Harap isi bidang password!',
+        ]);
+        if ($this->form_validation->run() == false) {
+            $this->load->view('siswa/login');
+        } else {
+            //validasi sukses
+            $this->siswa_login_process();
+        }
+    }
+
+    private function siswa_login_process()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('siswa', ['email' => $email])->row_array();
+
+        if ($user) {
+            //cek password
+            if (password_verify($password, $user['password'])) {
+                $data = [
+
+                    'email' => $user['email'],
+
+                ];
+                $this->session->set_userdata($data);
+                redirect(base_url('siswa'));
+            } else {
+
+                $this->session->set_flashdata('fail-pass', 'Gagal!');
+                redirect(base_url('welcome/siswa'));
+            }
+        } else {
+
+            $this->session->set_flashdata('fail-login', 'Gagal!');
+            redirect(base_url('welcome/siswa'));
+        }
+    }
+
     public function email()
     {
         $this->load->view('template/email-template');
