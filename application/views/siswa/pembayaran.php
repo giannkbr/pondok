@@ -135,8 +135,8 @@
 										</thead>
 
 										<tbody>
+											<form method='get'>
 											<?php
-
                                 foreach ($spp as $u) {
                                     ?>
 											<tr class="text-center">
@@ -162,13 +162,14 @@
 												</td>
 
 												<td class="text-center">
-													<button id="pay-button" class="btn btn-primary">Bayar ⭢</button>
+													<button id="pay-button" class="btn btn-primary" type="submit" name="submit" >Bayar ⭢</button>
 												</td>
 
 											</tr>
 											<?php
                                 }
                                 ?>
+                            </form>
 										</tbody>
 									</table>
 								</div>
@@ -246,15 +247,10 @@
 			event.preventDefault();
 			$(this).attr("disabled", "disabled");
 
-            var jumlah = $('#jumlah').val();
-
 
 			$.ajax({
-                type: 'POST',
+        
 				url: '<?=site_url()?>/siswa/token',
-                data: {
-                    jumlah: jumlah,
-                },
 				cache: false,
 
 				success: function (data) {
