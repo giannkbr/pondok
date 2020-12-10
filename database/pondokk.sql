@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2020 at 09:54 AM
+-- Generation Time: Dec 10, 2020 at 11:49 AM
 -- Server version: 10.5.8-MariaDB
 -- PHP Version: 7.4.13
 
@@ -88,6 +88,29 @@ INSERT INTO `siswa` (`id`, `nama`, `password`, `email`, `image`, `is_active`, `d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `spp`
+--
+
+CREATE TABLE `spp` (
+  `id` int(11) NOT NULL,
+  `bulan` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah` double NOT NULL,
+  `status` enum('Aktif','Tidak Aktif') COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `spp`
+--
+
+INSERT INTO `spp` (`id`, `bulan`, `tahun`, `jumlah`, `status`) VALUES
+(1, 'Januari', '2020', 190000, 'Aktif'),
+(2, 'Feb', '2020', 190000, 'Aktif'),
+(3, 'Maret', '2020', 190000, 'Aktif');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `token`
 --
 
@@ -97,6 +120,30 @@ CREATE TABLE `token` (
   `token` varchar(255) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `order_id` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gross_amount` int(11) NOT NULL,
+  `payment_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `transaction_time` varchar(19) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bank` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `va_number` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pdf_url` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_code` char(10) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`order_id`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`) VALUES
+('1574895985', 19000, 'bank_transfer', '2020-12-10 18:45:37', 'bca', '44861156511', 'https://app.sandbox.midtrans.com/snap/v1/transactions/11603a0e-4dc5-43e0-bb4e-dd3bf68a16b9/pdf', '201');
 
 --
 -- Indexes for dumped tables
@@ -121,10 +168,22 @@ ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `spp`
+--
+ALTER TABLE `spp`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `token`
 --
 ALTER TABLE `token`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -135,6 +194,12 @@ ALTER TABLE `token`
 --
 ALTER TABLE `siswa`
   MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `spp`
+--
+ALTER TABLE `spp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `token`
