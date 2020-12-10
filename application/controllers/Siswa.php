@@ -110,13 +110,13 @@ class Siswa extends CI_Controller
         // Required
         $transaction_details = array(
             'order_id' => rand(),
-          'gross_amount' => $jumlah// no decimal allowed for creditcard
+          'gross_amount' => 19000// no decimal allowed for creditcard
         );
 
         // Optional
         $item1_details = array(
             'id' => 'a1',
-            'price' => $jumlah,
+            'price' => '19000',
             'quantity' => 1,
             'name' => "pembayaran spp"
         );
@@ -185,10 +185,30 @@ class Siswa extends CI_Controller
 
     public function finish()
     {
-        $result = json_decode($this->input->post('result_data'));
-        echo 'RESULT <br><pre>';
-        var_dump($result);
-        echo '</pre>' ;
+        $result = json_decode($this->input->post('result_data'), TRUE);
+        // echo 'RESULT <br><pre>';
+        // var_dump($result);
+        // echo '</pre>' ;
 
+        $data = [
+            'order_id' => $result['order_id'],
+            'gross_amount' => $result['gross_amount'],
+            'payment_type' => $result['payment_type'],
+            'transaction_time' => $result['transaction_time'],
+            'bank' => $result['va_numbers'][0]["bank"],
+            'va_number' => $result['va_numbers'][0]["va_number"],
+            'pdf_url' => $result['pdf_url'],
+            'status_code' => $result['status_code']
+        ];
+    
+        $simpan = $this->db->insert('transaksi', $data);
+    
+        if($simpan){
+            $this->session->set_flashdata('success', 'Berhasil!');
+            redirect(base_url('siswa/pembayaran'));
+        }else{
+            $this->session->set_flashdata('gagal', 'Gagal!');
+            redirect(base_url('siswa/pembayaran'));
+        }
     }
 }

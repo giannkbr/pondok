@@ -116,7 +116,7 @@
 
                                foreach ($siswa as $a) {
                                     ?>
-                                    <h3 id="nama" name="nama" align="center" class="card-title" style="color: black;"><?php echo $a->nama ?>
+                                    <h3 id="nama" name="nama" class="card-title" style="color: black;"><?php echo "Nama Siswa : " . $a->nama ?>
                                         </h1>
                                         <?php
                                 }
@@ -182,13 +182,12 @@
 	<!-- End Main Content -->
 
 	<!-- Start Sweetalert -->
-
-	<?php if ($this->session->flashdata('success-edit')) : ?>
+	<?php if ($this->session->flashdata('gagal')) : ?>
 	<script>
 		Swal.fire({
 			icon: 'success',
-			title: 'Data Siswa Telah Dirubah!',
-			text: 'Selamat data berubah!',
+			title: 'Gagal Bayar!',
+			text: 'Gagal Mendapatkan Kode!',
 			showConfirmButton: false,
 			timer: 2500
 		})
@@ -196,19 +195,18 @@
 	</script>
 	<?php endif; ?>
 
-	<?php if ($this->session->flashdata('user-delete')) : ?>
+	<?php if ($this->session->flashdata('success')) : ?>
 	<script>
 		Swal.fire({
 			icon: 'success',
-			title: 'Data Siswa Telah Dihapus!',
-			text: 'Selamat data telah Dihapus!',
+			title: 'Berhasil Bayar!',
+			text: 'Silakan bayar dengan kode yg diberikan!',
 			showConfirmButton: false,
 			timer: 2500
 		})
 
 	</script>
 	<?php endif; ?>
-
 	<!-- End Sweetalert -->
 
 	<!-- Start Footer -->
