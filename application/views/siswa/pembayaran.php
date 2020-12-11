@@ -113,17 +113,18 @@
 
 											foreach ($siswa as $a) {
 												?>
-												<h3 id="nama" name="nama" class="card-title" style="color: black;"><?php echo "Nama Siswa : " . $a->nama ?>
+												<h3 id="nama" name="nama" class="card-title" style="color: black;"><?php echo "Nama Siswa : " . $a['nama'] ?>
 											</h1>
 											<?php
 										}
 										?>
-										
+
 										<table id="example" class="table align-items-center table-flush">
-											<form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
+											<!-- <form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
 												<input type="hidden" name="result_type" id="result-type" value=""></div>
 												<input type="hidden" name="result_data" id="result-data" value=""></div>
-											</form>
+
+											</form> -->
 											<thead class="thead-light">
 												<tr class="text-center">
 													<th scope="col">Bulan</th>
@@ -142,94 +143,100 @@
 													<tr class="text-center">
 
 														<td >
-															<?php echo $u->bulan ?>
-														</td>
+															<?= $u['bulan']; ?>
+														
+													<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
+														</h1>
+		
+												</td>
 
-														<td>
-															<?php echo $u->tahun ?>
-														</td>
+												<td>
+													<?= $u['tahun']; ?>
+												</td>
 
-														<td>
-															-
-														</td>
+												<td>
+													-
+												</td>
 
-														<td  >
-															<input type="text" name="jumlah" id="jumlah<?php echo $u->id ?>" value="<?php echo $u->jumlah ?>" disabled>
-														</td>
+												<td  >
+													<?= $u['jumlah']; ?>
+												</td>
 
-														<td>
-															<div class="badge badge-success">Completed</div>
-														</td>
+												<td>
+													<div class="badge badge-success">Completed</div>
+												</td>
 
-														<td>
-															<button id="pay-button" class="btn btn-primary">Bayar Bro</button>
-														</td>
-
-
-													</tr>
-													<?php
-												}
-												?>
+												<td>
+													<a href="<?= base_url('siswa/bayar/') . $a['id'].('/').$u['id']; ?>"><button id="pay-button" class="btn btn-primary" >Bayar Bro</button></a>
+													<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
+												</td>
 
 
-											</tbody>
+											</tr>
+											
 
-										</table>
+<?php
+										}
+										
+										?>
+									</tbody>
 
-									</div>
-								</div>
+								</table>
+
 							</div>
 						</div>
-					</section>
+					</div>
 				</div>
-			</div>
+			</section>
 		</div>
-		<!-- End Main Content -->
+	</div>
+</div>
+<!-- End Main Content -->
 
-		<!-- Start Sweetalert -->
-		<?php if ($this->session->flashdata('gagal')) : ?>
-			<script>
-				Swal.fire({
-					icon: 'success',
-					title: 'Gagal Bayar!',
-					text: 'Gagal Mendapatkan Kode!',
-					showConfirmButton: false,
-					timer: 2500
-				})
+<!-- Start Sweetalert -->
+<?php if ($this->session->flashdata('gagal')) : ?>
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'Gagal Bayar!',
+			text: 'Gagal Mendapatkan Kode!',
+			showConfirmButton: false,
+			timer: 2500
+		})
 
-			</script>
-		<?php endif; ?>
-
-		<?php if ($this->session->flashdata('success')) : ?>
-			<script>
-				Swal.fire({
-					icon: 'success',
-					title: 'Berhasil Bayar!',
-					text: 'Silakan bayar dengan kode yg diberikan!',
-					showConfirmButton: false,
-					timer: 2500
-				})
-
-			</script>
-		<?php endif; ?>
-		<!-- End Sweetalert -->
-
-		<!-- Start Footer -->
-		<footer class="main-footer">
-			<div class="text-center">
-				Copyright &copy; 2020 <div class="bullet"></div>
-			</div>
-		</footer>
-		<!-- End Footer -->
-
-		<!-- General JS Scripts -->
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('success')) : ?>
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'Berhasil Bayar!',
+			text: 'Silakan bayar dengan kode yg diberikan!',
+			showConfirmButton: false,
+			timer: 2500
+		})
+
+	</script>
+<?php endif; ?>
+<!-- End Sweetalert -->
+
+<!-- Start Footer -->
+<footer class="main-footer">
+	<div class="text-center">
+		Copyright &copy; 2020 <div class="bullet"></div>
+	</div>
+</footer>
+<!-- End Footer -->
+
+<!-- General JS Scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -252,12 +259,14 @@
 		$(this).attr("disabled", "disabled");
 
 		var jumlah = $("#jumlah2").val();
+		var nama = $("#nama2").val();
 
 		$.ajax({
 			type: 'POST',
 			url: '<?=site_url()?>/siswa/token',
 			data: {
-				jumlah: jumlah
+				jumlah: jumlah,
+				nama: nama
 			},
 			cache: false,
 

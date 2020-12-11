@@ -22,7 +22,7 @@ class Siswa extends CI_Controller
 
     public function index()
     {
-        $data['siswa'] = $this->db->get_where('siswa', ['email' =>
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
             $this->session->userdata('email')])->row_array();
 
         $this->load->view('siswa/index');
@@ -89,23 +89,36 @@ class Siswa extends CI_Controller
     {
         $this->load->model('m_siswa');
 
-        $data['siswa'] = $this->db->get_where('siswa', ['email' =>
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
             $this->session->userdata('email')])->row_array();
 
-        $data['siswa'] = $this->m_siswa->tampil_data()->result();
+        $data['siswa'] = $this->m_siswa->tampil_data()->result_array();
         $this->load->model('M_spp');
-        $data['spp'] = $this->db->get_where('admin', ['email' =>
-            $this->session->userdata('email')])->row_array();
 
-        $data['spp'] = $this->M_spp->tampil_data()->result();
+        $data['spp'] = $this->M_spp->tampil_data()->result_array();
         $this->load->view('siswa/pembayaran', $data);
     }
+
+
+    public function bayar()
+    {
+        $this->load->model('m_spp');
+        $this->load->model('m_siswa');
+         $data['spp'] = $this->m_spp->sppWhere(['id' => $this->uri->segment(4)])->result_array();
+         $data['nama'] = $this->m_siswa->siswaWhere(['id' => $this->uri->segment(3)])->result_array();
+
+        $this->load->view('siswa/bayar',$data);
+
+       
+}
 
     //midtrans
     public function token()
     {
-
-        $jumlah = $this->input->post('jumlah');
+     
+         
+         $nama = $this->input->post('nama');
+         $jumlah = $this->input->post('jumlah');
 
         
         // Required
@@ -119,7 +132,7 @@ class Siswa extends CI_Controller
             'id' => 'a1',
             'price' => $jumlah,
             'quantity' => 1,
-            'name' => "pembayaran spp"
+            'name' => "pembayaran spp ".$nama
         );
 
         // Optional
@@ -149,7 +162,7 @@ class Siswa extends CI_Controller
 
         // Optional
         $customer_details = array(
-            'first_name'    => "normen"
+            'first_name'    => $nama
         );
 
         // Data yang akan dikirim untuk request redirect_url.
@@ -199,9 +212,11 @@ class Siswa extends CI_Controller
         $simpan = $this->db->insert('transaksi', $data);
     
         if($simpan){
-            echo "sukses";
+            $this->session->set_flashdata('success', 'Berhasil!');
+            redirect(base_url('siswa/pembayaran'));
         }else{
-           echo "gagal";
-         }
+            $this->session->set_flashdata('gagal', 'Gagal!');
+            redirect(base_url('siswa/pembayaran'));
+        }
     }
 }

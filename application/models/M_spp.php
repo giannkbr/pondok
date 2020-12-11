@@ -13,6 +13,11 @@ class M_spp extends CI_Model
         return $query;
     }
 
+    public function sppWhere($where)
+    {
+        return $this->db->get_where('spp', $where);
+    }
+
     public function delete_spp($where, $table)
     {
         $this->db->where($where);

@@ -12,6 +12,10 @@ class M_siswa extends CI_Model
         $query = $this->db->get_where('siswa', array('id' => $id))->row();
         return $query;
     }
+public function siswaWhere($where)
+    {
+        return $this->db->get_where('siswa', $where);
+    }
 
     public function delete_siswa($where, $table)
     {
