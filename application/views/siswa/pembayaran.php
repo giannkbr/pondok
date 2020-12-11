@@ -249,11 +249,11 @@
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
 	<script type="text/javascript">
-		$('#pay-button2').click(function (event) {
+		$('#pay-button<?php echo $u->id ?>').click(function (event) {
 			event.preventDefault();
 			$(this).attr("disabled", "disabled");
 			
-			var jumlah = $("#jumlah1").val();
+			var jumlah = $("#jumlah<?php echo $u->id ?>").val();
 			$.ajax({
 				type: 'POST',
 				url: '<?=site_url()?>/siswa/token',

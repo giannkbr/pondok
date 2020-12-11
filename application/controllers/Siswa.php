@@ -186,9 +186,9 @@ class Siswa extends CI_Controller
     public function finish()
     {
         $result = json_decode($this->input->post('result_data'), TRUE);
-        // echo 'RESULT <br><pre>';
-        // var_dump($result);
-        // echo '</pre>' ;
+         echo 'RESULT <br><pre>';
+         var_dump($result);
+         echo '</pre>' ;
 
         $data = [
             'order_id' => $result['order_id'],
