@@ -105,7 +105,7 @@ class Siswa extends CI_Controller
     public function token()
     {
 
-        $jumlah = $this->input->get('jumlah');
+        $jumlah = $this->input->post('jumlah');
 
         
         // Required
