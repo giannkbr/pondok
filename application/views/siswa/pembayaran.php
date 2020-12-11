@@ -132,7 +132,7 @@
 											</thead>
 
 											<tbody>
-												<form id="payment-form" method="get" action="<?=site_url()?>/siswa/finish">
+												<form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
 													<input type="hidden" name="result_type" id="result-type" value="">
 													<input type="hidden" name="result_data" id="result-data" value="">
 
@@ -163,7 +163,7 @@
 															</td>
 
 															<td>
-																<button id="pay-button<?php echo $u->id ?>" class="btn btn-primary">Bayar Bro</button>
+																<button id="pay-button" class="btn btn-primary">Bayar Bro</button>
 															</td>
 
 														</tr>
@@ -249,11 +249,11 @@
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
 	<script type="text/javascript">
-		$('#pay-button<?php echo $u->id ?>').click(function (event) {
+		$('#pay-button').click(function (event) {
 			event.preventDefault();
 			$(this).attr("disabled", "disabled");
 			
-			var jumlah = $("#jumlah<?php echo $u->id ?>").val();
+			var jumlah = $("#jumlah2").val();
 			$.ajax({
 				type: 'POST',
 				url: '<?=site_url()?>/siswa/token',
