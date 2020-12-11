@@ -118,8 +118,12 @@
 											<?php
 										}
 										?>
-
+										
 										<table id="example" class="table align-items-center table-flush">
+											<form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
+												<input type="hidden" name="result_type" id="result-type" value=""></div>
+												<input type="hidden" name="result_data" id="result-data" value=""></div>
+											</form>
 											<thead class="thead-light">
 												<tr class="text-center">
 													<th scope="col">Bulan</th>
@@ -130,138 +134,134 @@
 													<th scope="col">Aksi</th>
 												</tr>
 											</thead>
-
 											<tbody>
-												<form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
-													<input type="hidden" name="result_type" id="result-type" value="">
-													<input type="hidden" name="result_data" id="result-data" value="">
+												
+												<?php
+												foreach ($spp as $u) {
+													?>
+													<tr class="text-center">
 
+														<td >
+															<?php echo $u->bulan ?>
+														</td>
+
+														<td>
+															<?php echo $u->tahun ?>
+														</td>
+
+														<td>
+															-
+														</td>
+
+														<td  >
+															<input type="text" name="jumlah" id="jumlah<?php echo $u->id ?>" value="<?php echo $u->jumlah ?>" disabled>
+														</td>
+
+														<td>
+															<div class="badge badge-success">Completed</div>
+														</td>
+
+														<td>
+															<button id="pay-button" class="btn btn-primary">Bayar Bro</button>
+														</td>
+
+
+													</tr>
 													<?php
-													foreach ($spp as $u) {
-														?>
-
-														<tr class="text-center">
-
-															<td >
-																<?php echo $u->bulan ?>
-															</td>
-
-															<td>
-																<?php echo $u->tahun ?>
-															</td>
-
-															<td>
-																-
-															</td>
-
-															<td  >
-																<input type="text" name="jumlah" id="jumlah<?php echo $u->id ?>" value="<?php echo $u->jumlah ?>" disabled>
-															</td>
-
-															<td>
-																<div class="badge badge-success">Completed</div>
-															</td>
-
-															<td>
-																<button id="pay-button" class="btn btn-primary">Bayar Bro</button>
-															</td>
-
-														</tr>
-														<?php
-}
-?>
+												}
+												?>
 
 
+											</tbody>
 
+										</table>
 
-													</form>
-
-												</tbody>
-											</table>
-										</div>
 									</div>
 								</div>
 							</div>
-						</section>
-					</div>
+						</div>
+					</section>
 				</div>
 			</div>
-			<!-- End Main Content -->
+		</div>
+		<!-- End Main Content -->
 
-			<!-- Start Sweetalert -->
-			<?php if ($this->session->flashdata('gagal')) : ?>
-				<script>
-					Swal.fire({
-						icon: 'success',
-						title: 'Gagal Bayar!',
-						text: 'Gagal Mendapatkan Kode!',
-						showConfirmButton: false,
-						timer: 2500
-					})
+		<!-- Start Sweetalert -->
+		<?php if ($this->session->flashdata('gagal')) : ?>
+			<script>
+				Swal.fire({
+					icon: 'success',
+					title: 'Gagal Bayar!',
+					text: 'Gagal Mendapatkan Kode!',
+					showConfirmButton: false,
+					timer: 2500
+				})
 
-				</script>
-			<?php endif; ?>
+			</script>
+		<?php endif; ?>
 
-			<?php if ($this->session->flashdata('success')) : ?>
-				<script>
-					Swal.fire({
-						icon: 'success',
-						title: 'Berhasil Bayar!',
-						text: 'Silakan bayar dengan kode yg diberikan!',
-						showConfirmButton: false,
-						timer: 2500
-					})
+		<?php if ($this->session->flashdata('success')) : ?>
+			<script>
+				Swal.fire({
+					icon: 'success',
+					title: 'Berhasil Bayar!',
+					text: 'Silakan bayar dengan kode yg diberikan!',
+					showConfirmButton: false,
+					timer: 2500
+				})
 
-				</script>
-			<?php endif; ?>
-			<!-- End Sweetalert -->
+			</script>
+		<?php endif; ?>
+		<!-- End Sweetalert -->
 
-			<!-- Start Footer -->
-			<footer class="main-footer">
-				<div class="text-center">
-					Copyright &copy; 2020 <div class="bullet"></div>
-				</div>
-			</footer>
-			<!-- End Footer -->
+		<!-- Start Footer -->
+		<footer class="main-footer">
+			<div class="text-center">
+				Copyright &copy; 2020 <div class="bullet"></div>
+			</div>
+		</footer>
+		<!-- End Footer -->
 
-			<!-- General JS Scripts -->
-			<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-		</script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+		<!-- General JS Scripts -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-	<script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
-	<!-- JS Libraies -->
-	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('#example').DataTable();
-		});
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
+<!-- JS Libraies -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$('#example').DataTable();
+	});
 
-	</script>
-	<!-- Template JS File -->
-	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
-	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
-	<script type="text/javascript">
-		$('#pay-button').click(function (event) {
-			event.preventDefault();
-			$(this).attr("disabled", "disabled");
-			
-			var jumlah = $("#jumlah2").val();
-			$.ajax({
-				type: 'POST',
-				url: '<?=site_url()?>/siswa/token',
-				data: {
-					jumlah: jumlah
-				},
-				cache: false,
-				success: function (data) {
+</script>
+<!-- Template JS File -->
+<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
+<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
+<script type="text/javascript">
+	$('#pay-button').click(function (event) {
+		event.preventDefault();
+		$(this).attr("disabled", "disabled");
+
+		var jumlah = $("#jumlah2").val();
+
+		$.ajax({
+			type: 'POST',
+			url: '<?=site_url()?>/siswa/token',
+			data: {
+				jumlah: jumlah
+			},
+			cache: false,
+
+			success: function (data) {
 					//location = data;
 
 					console.log('token = ' + data);
@@ -272,8 +272,8 @@
 					function changeResult(type, data) {
 						$("#result-type").val(type);
 						$("#result-data").val(JSON.stringify(data));
-						//resultType.innerHTML = type;
-						//resultData.innerHTML = JSON.stringify(data);
+						// resultType.innerHTML = type;
+						// resultData.innerHTML = JSON.stringify(data);
 					}
 
 					snap.pay(data, {
@@ -297,9 +297,9 @@
 					});
 				}
 			});
-		});
+	});
 
-	</script>
+</script>
 </body>
 
 

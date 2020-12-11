@@ -126,35 +126,30 @@ class Siswa extends CI_Controller
         $item_details = array ($item1_details);
 
         // Optional
-        $billing_address = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'address'       => "Mangga 20",
-            'city'          => "Jakarta",
-            'postal_code'   => "16602",
-            'phone'         => "081122334455",
-            'country_code'  => 'IDN'
-        );
+        // $billing_address = array(
+        //     'first_name'    => "Andri",
+        //     'last_name'     => "Litani",
+        //     'address'       => "Mangga 20",
+        //     'city'          => "Jakarta",
+        //     'postal_code'   => "16602",
+        //     'phone'         => "081122334455",
+        //     'country_code'  => 'IDN'
+        // );
 
-        // Optional
-        $shipping_address = array(
-            'first_name'    => "Obet",
-            'last_name'     => "Supriadi",
-            'address'       => "Manggis 90",
-            'city'          => "Jakarta",
-            'postal_code'   => "16601",
-            'phone'         => "08113366345",
-            'country_code'  => 'IDN'
-        );
+        // // Optional
+        // $shipping_address = array(
+        //     'first_name'    => "Obet",
+        //     'last_name'     => "Supriadi",
+        //     'address'       => "Manggis 90",
+        //     'city'          => "Jakarta",
+        //     'postal_code'   => "16601",
+        //     'phone'         => "08113366345",
+        //     'country_code'  => 'IDN'
+        // );
 
         // Optional
         $customer_details = array(
-            'first_name'    => "Andri",
-            'last_name'     => "Litani",
-            'email'         => "andri@litani.com",
-            'phone'         => "081122334455",
-            'billing_address'  => $billing_address,
-            'shipping_address' => $shipping_address
+            'first_name'    => "normen"
         );
 
         // Data yang akan dikirim untuk request redirect_url.
@@ -165,8 +160,8 @@ class Siswa extends CI_Controller
         $time = time();
         $custom_expiry = array(
             'start_time' => date("Y-m-d H:i:s O",$time),
-            'unit' => 'minute', 
-            'duration'  => 2
+            'unit' => 'day', 
+            'duration'  => 7
         );
         
         $transaction_data = array(
@@ -186,9 +181,9 @@ class Siswa extends CI_Controller
     public function finish()
     {
         $result = json_decode($this->input->post('result_data'), TRUE);
-         echo 'RESULT <br><pre>';
-         var_dump($result);
-         echo '</pre>' ;
+        // echo 'RESULT <br><pre>';
+        // var_dump($result);
+        // echo '</pre>' ;
 
         $data = [
             'order_id' => $result['order_id'],
@@ -204,11 +199,9 @@ class Siswa extends CI_Controller
         $simpan = $this->db->insert('transaksi', $data);
     
         if($simpan){
-            $this->session->set_flashdata('success', 'Berhasil!');
-            redirect(base_url('siswa/pembayaran'));
+            echo "sukses";
         }else{
-            $this->session->set_flashdata('gagal', 'Gagal!');
-            redirect(base_url('siswa/pembayaran'));
-        }
+           echo "gagal";
+         }
     }
 }
