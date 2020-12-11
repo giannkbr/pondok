@@ -163,7 +163,7 @@
 															</td>
 
 															<td>
-																<button id="pay-button" class="btn btn-primary">Bayar Bro</button>
+																<button id="pay-button<?php echo $u->id ?>" class="btn btn-primary">Bayar Bro</button>
 															</td>
 
 														</tr>
@@ -249,11 +249,11 @@
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
 	<script type="text/javascript">
-		$('#pay-button').click(function (event) {
+		$('#pay-button2').click(function (event) {
 			event.preventDefault();
 			$(this).attr("disabled", "disabled");
+			
 			var jumlah = $("#jumlah1").val();
-
 			$.ajax({
 				type: 'POST',
 				url: '<?=site_url()?>/siswa/token',
