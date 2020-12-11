@@ -104,23 +104,23 @@ class Siswa extends CI_Controller
     //midtrans
     public function token()
     {
-        $jumlah = $this->input->get();
+
+        $jumlah = $this->input->get('jumlah');
 
         
         // Required
         $transaction_details = array(
             'order_id' => rand(),
-          'gross_amount' => $jumlah['jumlah']// no decimal allowed for creditcard
+          'gross_amount' => $jumlah,// no decimal allowed for creditcard
         );
 
         // Optional
         $item1_details = array(
             'id' => 'a1',
-            'price' => $jumlah['jumlah'],
+            'price' => $jumlah,
             'quantity' => 1,
             'name' => "pembayaran spp"
         );
-
 
         // Optional
         $item_details = array ($item1_details);
