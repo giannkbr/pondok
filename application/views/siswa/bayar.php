@@ -106,48 +106,63 @@
                     <div class="bg-white p-4"
                     style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
                     <div class="table-responsive">
-                      <table id="example" class="table align-items-center table-flush">
-                        <form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
-                          <input type="hidden" name="result_type" id="result-type" value=""></div>
-                          <input type="hidden" name="result_data" id="result-data" value=""></div>
-                        
-                        <thead class="thead-light">
-                          <tr class="text-center">
-                            <th scope="col">Nama</th>
-                            <th scope="col">Bulan</th>
-                            <th scope="col">Tahun</th>
-                            <th scope="col">Tanggal Pembayaran</th>
-                            <th scope="col">Jumlah Pembayaran</th>
-                            <th scope="col">Aksi</th>
-                          </tr>
-                        </thead>
+                      <form id="payment-form" method="post" action="<?= site_url()?>siswa/finish">
+                        <input type="hidden" name="result_type" id="result-type" value=""></div>
+                        <input type="hidden" name="result_data" id="result-data" value=""></div>
 
-                        <tbody>
-                          <?php
-                          foreach ($nama as $a) {
-                            foreach ($spp as $u) {?>
-                              <tr class="text-center">
-                               <td>
-                                <input type="text" id="nama" name="nama" value="<?= $a['nama'] ?>" disabled >
-                              </td>
-                              <th scope="row">
-                                <?= $u['bulan'] ?>
-                              </th>
+                        <?php
+                            foreach ($nama as $a) {
+                              foreach ($spp as $u) {?>
+                        <input type="text" class="form-control" name="id1" id="id1" value="<?= $a['id'] ?>" hidden>
+                        <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
+                        <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
 
-                              <td>
-                                <?= $u['tahun'] ?>
-                              </td>
+                        <?php
+                          }
+                        }
+                        ?>
+                        <table id="example" class="table align-items-center table-flush">
+                          <thead class="thead-light">
+                            <tr class="text-center">
+                              <th scope="col">Nama</th>
+                              <th scope="col">Bulan</th>
+                              <th scope="col">Tahun</th>
+                              <th scope="col">Tanggal Pembayaran</th>
+                              <th scope="col">Jumlah Pembayaran</th>
+                              <th scope="col">Aksi</th>
+                            </tr>
+                          </thead>
 
-                              <td>
-                                -
-                              </td>
+                          <tbody>
+                            <?php
+                            foreach ($nama as $a) {
+                              foreach ($spp as $u) {?>
+                                <tr class="text-center">
+                                 <td>
+                                  <input type="text" class="form-control" name="nama" id="nama" value="<?= $a['nama'] ?>" hidden>
+                                  <?= $a['nama'] ?>
+                                </td>
+                                <th scope="row">
+                                  <input type="text" name="bulan" id="bulan" value="<?= $u['bulan'] ?>" hidden>
+                                  <?= $u['bulan'] ?>
+                                </th>
 
-                              <td>
-                                <input type="text" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled>
-                              </td>
+                                <td>
+                                  <?= $u['tahun'] ?>
+                                </td>
 
-                              <td>
-                                <button id="pay-button" class="btn btn-primary" >Bayar Bro</button>
+                                <td>
+                                  -
+                                </td>
+
+                                <td>
+                                  <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled>
+                                </td>
+
+                                <td>
+                                  <!-- <button id="pay-button" class="btn btn-primary" ><input type="submit" value="bayar"></button> -->
+                                  <input type="submit" id="pay-button" name="">
+                                
                               </td>
 
                             </tr>
@@ -156,8 +171,9 @@
                         }
                         ?>
                       </tbody>
-                      </form>
+                      
                     </table>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -235,13 +251,16 @@
 
     var jumlah = $("#jumlah").val();
     var nama = $("#nama").val();
+    var bulan = $("#bulan").val();
 
     $.ajax({
       type: 'POST',
       url: '<?=site_url()?>/siswa/token',
       data: {
         jumlah: jumlah,
-        nama: nama
+        nama: nama,
+        bulan : bulan
+
       },
       cache: false,
 

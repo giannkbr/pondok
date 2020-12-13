@@ -120,13 +120,10 @@
 										?>
 
 										<table id="example" class="table align-items-center table-flush">
-											<!-- <form id="payment-form" method="post" action="<?=site_url()?>/siswa/finish">
-												<input type="hidden" name="result_type" id="result-type" value=""></div>
-												<input type="hidden" name="result_data" id="result-data" value=""></div>
-
-											</form> -->
+								
 											<thead class="thead-light">
 												<tr class="text-center">
+													<th scope="col">Id</th>
 													<th scope="col">Bulan</th>
 													<th scope="col">Tahun</th>
 													<th scope="col">Tanggal Pembayaran</th>
@@ -141,99 +138,100 @@
 												foreach ($spp as $u) {
 													?>
 													<tr class="text-center">
+														<td><?= $u['id']; ?></td>
 
 														<td >
 															<?= $u['bulan']; ?>
-														
-													<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
+
+															<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
 														</h1>
-		
-												</td>
 
-												<td>
-													<?= $u['tahun']; ?>
-												</td>
+													</td>
 
-												<td>
-													-
-												</td>
+													<td>
+														<?= $u['tahun']; ?>
+													</td>
 
-												<td  >
-													<?= $u['jumlah']; ?>
-												</td>
+													<td>
+														-
+													</td>
 
-												<td>
-													<div class="badge badge-success">Completed</div>
-												</td>
+													<td  >
+														<?= $u['jumlah']; ?>
+													</td>
 
-												<td>
-													<a href="<?= base_url('siswa/bayar/') . $a['id'].('/').$u['id']; ?>"><button id="pay-button" class="btn btn-primary" >Bayar Bro</button></a>
-													<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
-												</td>
+													<td>
+														<div class="badge badge-success">Completed</div>
+													</td>
+
+													<td>
+														<a href="<?= base_url('siswa/bayar/') . $a['id'].('/').$u['id']; ?>">Bayar Bro</a>
+														<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
+													</td>
 
 
-											</tr>
-											
+												</tr>
 
-<?php
-										}
-										
-										?>
-									</tbody>
 
-								</table>
+												<?php
+											}
 
+											?>
+										</tbody>
+
+									</table>
+
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		</div>
 	</div>
-</div>
-<!-- End Main Content -->
+	<!-- End Main Content -->
 
-<!-- Start Sweetalert -->
-<?php if ($this->session->flashdata('gagal')) : ?>
-	<script>
-		Swal.fire({
-			icon: 'success',
-			title: 'Gagal Bayar!',
-			text: 'Gagal Mendapatkan Kode!',
-			showConfirmButton: false,
-			timer: 2500
-		})
+	<!-- Start Sweetalert -->
+	<?php if ($this->session->flashdata('gagal')) : ?>
+		<script>
+			Swal.fire({
+				icon: 'success',
+				title: 'Gagal Bayar!',
+				text: 'Gagal Mendapatkan Kode!',
+				showConfirmButton: false,
+				timer: 2500
+			})
 
-	</script>
-<?php endif; ?>
+		</script>
+	<?php endif; ?>
 
-<?php if ($this->session->flashdata('success')) : ?>
-	<script>
-		Swal.fire({
-			icon: 'success',
-			title: 'Berhasil Bayar!',
-			text: 'Silakan bayar dengan kode yg diberikan!',
-			showConfirmButton: false,
-			timer: 2500
-		})
+	<?php if ($this->session->flashdata('success')) : ?>
+		<script>
+			Swal.fire({
+				icon: 'success',
+				title: 'Berhasil Bayar!',
+				text: 'Silakan bayar dengan kode yg diberikan!',
+				showConfirmButton: false,
+				timer: 2500
+			})
 
-	</script>
-<?php endif; ?>
-<!-- End Sweetalert -->
+		</script>
+	<?php endif; ?>
+	<!-- End Sweetalert -->
 
-<!-- Start Footer -->
-<footer class="main-footer">
-	<div class="text-center">
-		Copyright &copy; 2020 <div class="bullet"></div>
-	</div>
-</footer>
-<!-- End Footer -->
+	<!-- Start Footer -->
+	<footer class="main-footer">
+		<div class="text-center">
+			Copyright &copy; 2020 <div class="bullet"></div>
+		</div>
+	</footer>
+	<!-- End Footer -->
 
-<!-- General JS Scripts -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	<!-- General JS Scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
@@ -251,64 +249,6 @@ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07j
 
 </script>
 <!-- Template JS File -->
-<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
-<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
-<script type="text/javascript">
-	$('#pay-button').click(function (event) {
-		event.preventDefault();
-		$(this).attr("disabled", "disabled");
-
-		var jumlah = $("#jumlah2").val();
-		var nama = $("#nama2").val();
-
-		$.ajax({
-			type: 'POST',
-			url: '<?=site_url()?>/siswa/token',
-			data: {
-				jumlah: jumlah,
-				nama: nama
-			},
-			cache: false,
-
-			success: function (data) {
-					//location = data;
-
-					console.log('token = ' + data);
-
-					var resultType = document.getElementById('result-type');
-					var resultData = document.getElementById('result-data');
-
-					function changeResult(type, data) {
-						$("#result-type").val(type);
-						$("#result-data").val(JSON.stringify(data));
-						// resultType.innerHTML = type;
-						// resultData.innerHTML = JSON.stringify(data);
-					}
-
-					snap.pay(data, {
-
-						onSuccess: function (result) {
-							changeResult('success', result);
-							console.log(result.status_message);
-							console.log(result);
-							$("#payment-form").submit();
-						},
-						onPending: function (result) {
-							changeResult('pending', result);
-							console.log(result.status_message);
-							$("#payment-form").submit();
-						},
-						onError: function (result) {
-							changeResult('error', result);
-							console.log(result.status_message);
-							$("#payment-form").submit();
-						}
-					});
-				}
-			});
-	});
-
-</script>
 </body>
 
 

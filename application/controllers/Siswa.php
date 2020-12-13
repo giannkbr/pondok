@@ -115,10 +115,9 @@ class Siswa extends CI_Controller
     //midtrans
     public function token()
     {
-     
-         
          $nama = $this->input->post('nama');
          $jumlah = $this->input->post('jumlah');
+         $bulan = $this->input->post('bulan');
 
         
         // Required
@@ -132,7 +131,7 @@ class Siswa extends CI_Controller
             'id' => 'a1',
             'price' => $jumlah,
             'quantity' => 1,
-            'name' => "pembayaran spp ".$nama
+            'name' => "pembayaran spp ".$nama." Bulan ".$bulan
         );
 
         // Optional
@@ -194,11 +193,19 @@ class Siswa extends CI_Controller
     public function finish()
     {
         $result = json_decode($this->input->post('result_data'), TRUE);
+        $jumlah = $this->input->post('jumlah');
+        // $id = $this->input->post('id');
+        // $bulan = $this->input->post('bulan1');
         // echo 'RESULT <br><pre>';
-        // var_dump($result);
+        // var_dump($result,$_POST['nama1']);
         // echo '</pre>' ;
+        // print_r($_POST);
+        
 
         $data = [
+            'id' => $_POST['id1'],
+            'nama' => $_POST['nama1'],
+            'bulan' => $_POST['bulan1'],
             'order_id' => $result['order_id'],
             'gross_amount' => $result['gross_amount'],
             'payment_type' => $result['payment_type'],
