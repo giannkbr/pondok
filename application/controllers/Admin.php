@@ -108,12 +108,12 @@ class Admin extends CI_Controller
             $this->session->userdata('email')])->row_array();
 
         $data['user'] = $this->m_siswa->tampil_data()->result();
-
         $this->load->model('M_spp');
+        $this->load->model('m_transaksi');
         $data['spp'] = $this->db->get_where('admin', ['email' =>
             $this->session->userdata('email')])->row_array();
 
-        $data['spp'] = $this->M_spp->tampil_data()->result();
+        $data['transaksi'] = $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
 
         $this->load->view('admin/pembayaran_siswa', $data);
     }

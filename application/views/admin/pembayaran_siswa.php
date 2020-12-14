@@ -126,61 +126,71 @@
                                 }
                                 ?>
 										<table id="example" class="table align-items-center table-flush">
-											<thead class="thead-light">
-												<tr class="text-center">
-													<th scope="col">Bulan</th>
-													<th scope="col">Tahun</th>
-													<th scope="col">Tanggal Pembayaran</th>
-													<th scope="col">Jumlah Pembayaran</th>
-													<th scope="col">Status</th>
-													<th scope="col">Detail</th>
-												</tr>
-											</thead>
 
-											<tbody>
-												<?php
+												<thead class="thead-light">
+													<tr class="text-center">
+														<th scope="col">Bulan</th>
+														<th scope="col">Order_Id</th>
+														
+														<th scope="col">Jumlah</th>
+														<th scope="col">Metode</th>
+														<th scope="col">Waktu</th>
+														<th scope="col">Bank</th>
+														<th scope="col">Va_Number</th>
+														<th scope="col">Link</th>
+													</tr>
+												</thead>
+												<tbody>
 
-                                foreach ($spp as $u) {
-                                    ?>
-												<tr class="text-center">
+													<?php
+													foreach ($transaksi as $t) {
+															?>
+															<tr class="text-center">
+																<td >
+																	<?= $t['id_spp']; ?>
+																</td>
 
-													<td>
-														<?php echo $u->bulan ?>
-													</td>
+																<td><?= $t['order_id']; ?></td>
 
-													<td>
-														<?php echo $u->tahun ?>
-													</td>
+																<td  >
+																	<?= $t['gross_amount']; ?>
+																</td>
 
-													<td>
-														-
-													</td>
+																<td>
+																	<?= $t['payment_type']; ?>
+																</td>
 
-													<td>
-														<?php echo $u->jumlah ?>
-													</td>
+																<td>
+																	<?= $t['transaction_time']; ?>
+																	
+																</td>
 
-													<td>
-														<div class="badge badge-success">Completed</div>
-													</td>
+																<td>
+																	<?= $t['bank']; ?>
+																</td>
 
-													<td class="text-center">
-														<a href="<?php echo site_url('admin/detail_siswa/' . $u->id); ?>"
-															class="btn btn-primary">detail ⭢</a>
-													</td>
+																<td>
+																	<?= $t['va_number']; ?>
+																</td>
 
-												</tr>
-												<?php
-                                }
-                                ?>
-											</tbody>
-										</table>
-										<p class="small font-weight-bold">* Angka 1 menunjukan akun telah aktif
-											sedangkan
-											Angka
-											0 menunjukan akun
-											belum
-											aktif</p>
+																<td>
+																	<a href="<?= $t['pdf_url']; ?>">Link</a>
+																	
+																</td>
+
+
+															</tr>
+
+
+															<?php
+														
+														}
+
+
+														?>
+													</tbody>
+
+												</table>
 								</div>
 							</div>
 						</div>

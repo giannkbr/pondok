@@ -113,9 +113,11 @@
                         <?php
                             foreach ($nama as $a) {
                               foreach ($spp as $u) {?>
-                        <input type="text" class="form-control" name="id1" id="id1" value="<?= $a['id'] ?>" hidden>
+                        <input type="text" class="form-control" name="id_siswa" id="id_siswa" value="<?= $a['id'] ?>" hidden>
+                        <input type="text" class="form-control" name="id_spp" id="id_spp" value="<?= $u['id'] ?>" hidden>
                         <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
                         <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
+                        <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" hidden>
 
                         <?php
                           }
@@ -156,7 +158,8 @@
                                 </td>
 
                                 <td>
-                                  <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled>
+                                  <?= $u['jumlah'] ?>
+                                  <!-- <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled> -->
                                 </td>
 
                                 <td>

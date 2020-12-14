@@ -85,7 +85,7 @@ class Siswa extends CI_Controller
         }
     }
 
-     public function pembayaran()
+    public function pembayaran()
     {
         $this->load->model('m_siswa');
 
@@ -104,38 +104,48 @@ class Siswa extends CI_Controller
     {
         $this->load->model('m_spp');
         $this->load->model('m_siswa');
-         $data['spp'] = $this->m_spp->sppWhere(['id' => $this->uri->segment(4)])->result_array();
-         $data['nama'] = $this->m_siswa->siswaWhere(['id' => $this->uri->segment(3)])->result_array();
+        $data['spp'] = $this->m_spp->sppWhere(['id' => $this->uri->segment(4)])->result_array();
+        $data['nama'] = $this->m_siswa->siswaWhere(['id' => $this->uri->segment(3)])->result_array();
 
-        $this->load->view('siswa/bayar',$data);
+        $this->load->view('siswa/bayar',$data);       
+    }
 
-       
-}
+    public function bayar_detail()
+    {
+        $this->load->model('m_transaksi');
+        $this->load->model('m_spp');
+        $data['transaksi'] = $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
+        // $data['spp'] = $this->m_spp->sppWhere(['id' => $this->uri->segment(4)])->result_array();
+
+        $this->load->view('siswa/bayar_detail',$data);       
+    }
+
+
 
     //midtrans
     public function token()
     {
-         $nama = $this->input->post('nama');
-         $jumlah = $this->input->post('jumlah');
-         $bulan = $this->input->post('bulan');
+       $nama = $this->input->post('nama');
+       $jumlah = $this->input->post('jumlah');
+       $bulan = $this->input->post('bulan');
 
-        
+
         // Required
-        $transaction_details = array(
-            'order_id' => rand(),
+       $transaction_details = array(
+        'order_id' => rand(),
           'gross_amount' => $jumlah,// no decimal allowed for creditcard
-        );
+      );
 
         // Optional
-        $item1_details = array(
-            'id' => 'a1',
-            'price' => $jumlah,
-            'quantity' => 1,
-            'name' => "pembayaran spp ".$nama." Bulan ".$bulan
-        );
+       $item1_details = array(
+        'id' => 'a1',
+        'price' => $jumlah,
+        'quantity' => 1,
+        'name' => "pembayaran spp ".$nama." Bulan ".$bulan
+    );
 
         // Optional
-        $item_details = array ($item1_details);
+       $item_details = array ($item1_details);
 
         // Optional
         // $billing_address = array(
@@ -160,70 +170,69 @@ class Siswa extends CI_Controller
         // );
 
         // Optional
-        $customer_details = array(
-            'first_name'    => $nama
-        );
+       $customer_details = array(
+        'first_name'    => $nama
+    );
 
         // Data yang akan dikirim untuk request redirect_url.
-        $credit_card['secure'] = true;
+       $credit_card['secure'] = true;
         //ser save_card true to enable oneclick or 2click
         //$credit_card['save_card'] = true;
 
-        $time = time();
-        $custom_expiry = array(
-            'start_time' => date("Y-m-d H:i:s O",$time),
-            'unit' => 'day', 
-            'duration'  => 7
-        );
-        
-        $transaction_data = array(
-            'transaction_details'=> $transaction_details,
-            'item_details'       => $item_details,
-            'customer_details'   => $customer_details,
-            'credit_card'        => $credit_card,
-            'expiry'             => $custom_expiry
-        );
+       $time = time();
+       $custom_expiry = array(
+        'start_time' => date("Y-m-d H:i:s O",$time),
+        'unit' => 'day', 
+        'duration'  => 7
+    );
 
-        error_log(json_encode($transaction_data));
-        $snapToken = $this->midtrans->getSnapToken($transaction_data);
-        error_log($snapToken);
-        echo $snapToken;
-    }
+       $transaction_data = array(
+        'transaction_details'=> $transaction_details,
+        'item_details'       => $item_details,
+        'customer_details'   => $customer_details,
+        'credit_card'        => $credit_card,
+        'expiry'             => $custom_expiry
+    );
 
-    public function finish()
-    {
-        $result = json_decode($this->input->post('result_data'), TRUE);
-        $jumlah = $this->input->post('jumlah');
+       error_log(json_encode($transaction_data));
+       $snapToken = $this->midtrans->getSnapToken($transaction_data);
+       error_log($snapToken);
+       echo $snapToken;
+   }
+
+   public function finish()
+   {
+    $result = json_decode($this->input->post('result_data'), TRUE);
+    $jumlah = $this->input->post('jumlah');
         // $id = $this->input->post('id');
         // $bulan = $this->input->post('bulan1');
         // echo 'RESULT <br><pre>';
         // var_dump($result,$_POST['nama1']);
         // echo '</pre>' ;
         // print_r($_POST);
-        
 
-        $data = [
-            'id' => $_POST['id1'],
-            'nama' => $_POST['nama1'],
-            'bulan' => $_POST['bulan1'],
-            'order_id' => $result['order_id'],
-            'gross_amount' => $result['gross_amount'],
-            'payment_type' => $result['payment_type'],
-            'transaction_time' => $result['transaction_time'],
-            'bank' => $result['va_numbers'][0]["bank"],
-            'va_number' => $result['va_numbers'][0]["va_number"],
-            'pdf_url' => $result['pdf_url'],
-            'status_code' => $result['status_code']
-        ];
+
+    $data = [
+        'id_siswa' => $_POST['id_siswa'],
+        'id_spp' => $_POST['id_spp'],
+        'order_id' => $result['order_id'],
+        'gross_amount' => $result['gross_amount'],
+        'payment_type' => $result['payment_type'],
+        'transaction_time' => $result['transaction_time'],
+        'bank' => $result['va_numbers'][0]["bank"],
+        'va_number' => $result['va_numbers'][0]["va_number"],
+        'pdf_url' => $result['pdf_url'],
+        'status_code' => $result['status_code']
+    ];
     
-        $simpan = $this->db->insert('transaksi', $data);
+    $simpan = $this->db->insert('transaksi', $data);
     
-        if($simpan){
-            $this->session->set_flashdata('success', 'Berhasil!');
-            redirect(base_url('siswa/pembayaran'));
-        }else{
-            $this->session->set_flashdata('gagal', 'Gagal!');
-            redirect(base_url('siswa/pembayaran'));
-        }
+    if($simpan){
+        $this->session->set_flashdata('success', 'Berhasil!');
+        redirect(base_url('siswa/pembayaran'));
+    }else{
+        $this->session->set_flashdata('gagal', 'Gagal!');
+        redirect(base_url('siswa/pembayaran'));
     }
+}
 }
