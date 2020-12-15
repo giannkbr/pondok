@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Admin Dashboard - SPP Pondok</title>
+    <title>Siswa Dashboard - SPP Pondok</title>
     <!-- General CSS Files -->
     <link rel="icon" href="<?= base_url('assets/') ?>img/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
                             ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-title">Admin - SPPP</div>
+                            <div class="dropdown-title">Siswa - SPPP</div>
                             <a href="<?= base_url('welcome/logout') ?>" class="dropdown-item has-icon text-primary">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="<?= base_url('admin') ?>">SPPP</a>
+                        <a href="<?= base_url('siswa') ?>">SPPP</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header ">Dashboard</li>

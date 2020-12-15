@@ -14,9 +14,10 @@ class Siswa extends CI_Controller
         $this->load->library('midtrans');
         $this->midtrans->config($params);
         $this->load->helper('url');
-        // $this->session->set_flashdata('not-login', 'Gagal!');
-        // if (!$this->session->userdata('email')) {
-        //     redirect('welcome');
+        $this->session->set_flashdata('not-login', 'Gagal!');
+        if (!$this->session->userdata('email')) {
+            redirect('welcome/siswa');
+        }
 
     }
 
@@ -81,7 +82,7 @@ class Siswa extends CI_Controller
             // $this->_sendEmail($token, 'verify');
 
             $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('welcome/admin'));
+            redirect(base_url('admin'));
         }
     }
 
@@ -206,33 +207,33 @@ class Siswa extends CI_Controller
     $jumlah = $this->input->post('jumlah');
         // $id = $this->input->post('id');
         // $bulan = $this->input->post('bulan1');
-        // echo 'RESULT <br><pre>';
-        // var_dump($result,$_POST['nama1']);
-        // echo '</pre>' ;
-        // print_r($_POST);
+        echo 'RESULT <br><pre>';
+        var_dump($result,$_POST);
+        echo '</pre>' ;
+        print_r($_POST);
 
 
-    $data = [
-        'id_siswa' => $_POST['id_siswa'],
-        'id_spp' => $_POST['id_spp'],
-        'order_id' => $result['order_id'],
-        'gross_amount' => $result['gross_amount'],
-        'payment_type' => $result['payment_type'],
-        'transaction_time' => $result['transaction_time'],
-        'bank' => $result['va_numbers'][0]["bank"],
-        'va_number' => $result['va_numbers'][0]["va_number"],
-        'pdf_url' => $result['pdf_url'],
-        'status_code' => $result['status_code']
-    ];
+    // $data = [
+    //     'id_siswa' => $_POST['id_siswa'],
+    //     'id_spp' => $_POST['id_spp'],
+    //     'order_id' => $result['order_id'],
+    //     'gross_amount' => $result['gross_amount'],
+    //     'payment_type' => $result['payment_type'],
+    //     'transaction_time' => $result['transaction_time'],
+    //     'bank' => $result['va_numbers'][0]["bank"],
+    //     'va_number' => $result['va_numbers'][0]["va_number"],
+    //     'pdf_url' => $result['pdf_url'],
+    //     'status_code' => $result['status_code']
+    // ];
     
-    $simpan = $this->db->insert('transaksi', $data);
+    // $simpan = $this->db->insert('transaksi', $data);
     
-    if($simpan){
-        $this->session->set_flashdata('success', 'Berhasil!');
-        redirect(base_url('siswa/pembayaran'));
-    }else{
-        $this->session->set_flashdata('gagal', 'Gagal!');
-        redirect(base_url('siswa/pembayaran'));
-    }
+    // if($simpan){
+    //     $this->session->set_flashdata('success', 'Berhasil!');
+    //     redirect(base_url('siswa/pembayaran'));
+    // }else{
+    //     $this->session->set_flashdata('gagal', 'Gagal!');
+    //     redirect(base_url('siswa/pembayaran'));
+    // }
 }
 }

@@ -54,7 +54,7 @@
               ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Admin - SPPP</div>
+              <div class="dropdown-title">Siswa - SPPP</div>
               <a href="<?= base_url('welcome/logout') ?>" class="dropdown-item has-icon text-primary">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
@@ -66,7 +66,7 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand text-primary">
             <div>
-              <a href="<?= base_url('admin') ?>"
+              <a href="<?= base_url('siswa') ?>"
                 style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
                 class="text-primary text-center"><i style="font-size: 20px;"
                 class="fas fa-graduation-cap"></i> |
@@ -74,12 +74,12 @@
             </div>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?= base_url('admin') ?>">SPPP</a>
+            <a href="<?= base_url('siswa') ?>">SPPP</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header ">Dashboard</li>
             <li class="nav-item dropdown active">
-              <a href="<?= base_url('admin') ?>" class="nav-link"><i
+              <a href="<?= base_url('siswa') ?>" class="nav-link"><i
                 class="fas fa-desktop"></i><span>Dashboard</span></a>
               </li>
               <li class="menu-header">Management Siswa</li>
@@ -87,7 +87,7 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
                   <span>Siswa</span></a>
                   <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
+                    <li><a class="nav-link" href="<?= base_url('siswa/Pembayaran') ?>">Data Siswa</a></li>
                   </ul>
                 </li>
               </aside>

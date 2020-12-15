@@ -67,7 +67,7 @@
 				<aside id="sidebar-wrapper">
 					<div class="sidebar-brand text-primary">
 						<div>
-							<a href="<?= base_url('admin') ?>"
+							<a href="<?= base_url('siswa') ?>"
 								style="font-size: 20px;font-weight:900;font-family: 'Poppins', sans-serif;"
 								class="text-primary text-center"><i style="font-size: 20px;"
 								class="fas fa-graduation-cap"></i> |
@@ -75,12 +75,12 @@
 						</div>
 					</div>
 					<div class="sidebar-brand sidebar-brand-sm">
-						<a href="<?= base_url('admin') ?>">SPPP</a>
+						<a href="<?= base_url('siswa') ?>">SPPP</a>
 					</div>
 					<ul class="sidebar-menu">
 						<li class="menu-header ">Dashboard</li>
 						<li class="nav-item dropdown active">
-							<a href="<?= base_url('admin') ?>" class="nav-link"><i
+							<a href="<?= base_url('siswa') ?>" class="nav-link"><i
 								class="fas fa-desktop"></i><span>Dashboard</span></a>
 							</li>
 							<li class="menu-header">Management Siswa</li>
@@ -88,7 +88,7 @@
 								<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
 									<span>Siswa</span></a>
 									<ul class="dropdown-menu">
-										<li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
+										<li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Data Siswa</a></li>
 									</ul>
 								</li>
 							</aside>
@@ -109,18 +109,16 @@
 										<div class="bg-white p-4"
 										style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
 										<div class="table-responsive">
-											<?php
 
-											foreach ($siswa as $a) {
-												?>
-												<h3 id="nama" name="nama" class="card-title" style="color: black;"><?php echo "Nama Siswa : " . $a['nama'] ?>
-											</h1>
-											<?php
-										}
-										?>
+											<h3 id="nama" name="nama" class="card-title" style="color: black;"><?php
+											$data['siswa'] = $this->db->get_where('siswa', ['email' =>
+												$this->session->userdata('email')])->row_array();
+											echo $data['siswa']['nama'];
+											?>
+										</h1>
 
 										<table id="example" class="table align-items-center table-flush">
-								
+
 											<thead class="thead-light">
 												<tr class="text-center">
 													<th scope="col">Id</th>
@@ -135,42 +133,42 @@
 												
 												<?php
 												foreach ($spp as $u) {
-													?>
-													<tr class="text-center">
-														<td><?= $u['id']; ?></td>
+														?>
+														<tr class="text-center">
+															<td><?= $u['id']; ?></td>
 
-														<td >
-															<?= $u['bulan']; ?>
+															<td >
+																<?= $u['bulan']; ?>
 
-															<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
-														</h1>
+																<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
+															</h1>
 
-													</td>
+														</td>
 
-													<td>
-														<?= $u['tahun']; ?>
-													</td>
+														<td>
+															<?= $u['tahun']; ?>
+														</td>
 
-													<td  >
-														<?= $u['jumlah']; ?>
-													</td>
+														<td  >
+															<?= $u['jumlah']; ?>
+														</td>
 
-													<td>
-													<a href="<?= base_url('siswa/bayar_detail/') . $a['id']	; ?>">Detail Pembayaran</a>
-													</td>
+														<td>
+															<a href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Detail Pembayaran</a>
+														</td>
 
-													<td>
-														<a href="<?= base_url('siswa/bayar/') . $a['id'].('/').$u['id']; ?>">Bayar Bro</a>
-														<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
-													</td>
-
-
-												</tr>
+														<td>
+															<a href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar Bro</a>
+															<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
+														</td>
 
 
-												<?php
+													</tr>
+
+
+													<?php
+												
 											}
-										
 
 											?>
 										</tbody>

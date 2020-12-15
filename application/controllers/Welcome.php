@@ -35,7 +35,7 @@ class Welcome extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->set_flashdata('success-logout', 'Berhasil!');
-        redirect(base_url('welcome/admin'));
+        redirect(base_url('welcome/siswa'));
     }
 
     private function login()
@@ -55,7 +55,7 @@ class Welcome extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect(base_url('user'));
+                    redirect(base_url('siswa'));
                 } else {
                     $this->session->set_flashdata('fail-pass', 'Gagal!');
                     redirect(base_url('welcome'));
