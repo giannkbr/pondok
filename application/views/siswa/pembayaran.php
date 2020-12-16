@@ -88,7 +88,7 @@
 								<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
 									<span>Siswa</span></a>
 									<ul class="dropdown-menu">
-										<li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Data Siswa</a></li>
+										<li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Pembayaran</a></li>
 									</ul>
 								</li>
 							</aside>

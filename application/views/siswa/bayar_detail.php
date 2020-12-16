@@ -88,7 +88,7 @@
 								<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
 									<span>Siswa</span></a>
 									<ul class="dropdown-menu">
-										<li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
+										<li><a class="nav-link" href="<?= base_url('siswa/Pembayaran') ?>">Pembayaran</a></li>
 									</ul>
 								</li>
 							</aside>
@@ -122,7 +122,8 @@
 														<th scope="col">Waktu</th>
 														<th scope="col">Bank</th>
 														<th scope="col">Va_Number</th>
-														<th scope="col">Link</th>
+														<th scope="col">Petunjuk</th>
+														<th scope="col">Status</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -161,6 +162,20 @@
 																<td>
 																	<a href="<?= $t['pdf_url']; ?>">Link</a>
 																	
+																</td>
+
+																<td>
+																	<?php if ($t['status_code'] == 200) {
+																	?>
+																	<a href="#" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Success</a>
+
+																	<?php }
+																	else{ ?>
+																		<a href="#" class="btn btn-icon icon-left btn-warning"><i class="fas fa-exclamation-triangle"></i> Pending</a>
+
+																	<?php } ?>
+
+																
 																</td>
 
 
