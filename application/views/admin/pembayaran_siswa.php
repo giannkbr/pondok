@@ -131,7 +131,6 @@
 													<tr class="text-center">
 														<th scope="col">Bulan</th>
 														<th scope="col">Order_Id</th>
-														
 														<th scope="col">Jumlah</th>
 														<th scope="col">Metode</th>
 														<th scope="col">Waktu</th>
@@ -147,7 +146,7 @@
 															?>
 															<tr class="text-center">
 																<td >
-																	<?= $t['id_spp']; ?>
+																	<!-- <?= $t['id_spp']; ?> -->
 																</td>
 
 																<td><?= $t['order_id']; ?></td>

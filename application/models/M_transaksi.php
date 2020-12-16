@@ -12,8 +12,9 @@ class M_transaksi extends CI_Model
         $query = $this->db->get_where('transaksi', array('id' => $id))->row();
         return $query;
     }
-public function transaksiWhere($where)
+    public function transaksiWhere($where)
     {
+        return $this->db->get('transaksi');
         return $this->db->get_where('transaksi', $where);
     }
 

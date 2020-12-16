@@ -118,7 +118,7 @@ class Siswa extends CI_Controller
         $this->load->model('m_spp');   
         
         
-        $data['transaksi'] = $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
+        $data['transaksi'] = $this->M_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
 
         $this->load->view('siswa/bayar_detail',$data);
     }
