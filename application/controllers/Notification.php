@@ -31,9 +31,6 @@ class Notification extends CI_Controller {
 
 	public function index()
 	{
-		echo 'test notification handler';
-		$json_result = file_get_contents('php://input');
-		$result = json_decode($json_result);
 
 		 echo 'test notification handler';
         $json_result = file_get_contents('php://input');
