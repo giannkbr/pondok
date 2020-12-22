@@ -13,7 +13,7 @@ class M_siswa extends CI_Model
         return $query;
     }
 public function siswaWhere($where)
-    {
+    { 
         return $this->db->get_where('siswa', $where);
     }
 

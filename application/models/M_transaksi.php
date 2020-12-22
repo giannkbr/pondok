@@ -14,9 +14,14 @@ class M_transaksi extends CI_Model
     }
     public function transaksiWhere($where)
     {
+<<<<<<< Updated upstream
         return $this->db->get('transaksi');
+=======
+        $this->db->order_by('transaction_time','asc');
+>>>>>>> Stashed changes
         return $this->db->get_where('transaksi', $where);
     }
+
 
     public function delete_transaksi($where, $table)
     {

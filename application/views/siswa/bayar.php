@@ -87,19 +87,19 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
                   <span>Siswa</span></a>
                   <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="<?= base_url('siswa/Pembayaran') ?>">Pembayara</a></li>
+                    <li><a class="nav-link" href="<?= base_url('siswa/Pembayaran') ?>">Pembayaran</a></li>
                   </ul>
                 </li>
               </aside>
             </div>
 
             <!-- Main Content -->
+
             <div class="main-content">
               <section class="section">
                 <div class="card">
                   <div class="card-body">
                     <h2 class="card-title" style="color: black;">Bayar SPP</h2>
-                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
@@ -111,15 +111,15 @@
                         <input type="hidden" name="result_data" id="result-data" value=""></div>
 
                         <?php
-                            foreach ($nama as $a) {
-                              foreach ($spp as $u) {?>
-                        <input type="text" class="form-control" name="id_siswa" id="id_siswa" value="<?= $a['id'] ?>" hidden>
-                        <input type="text" class="form-control" name="id_spp" id="id_spp" value="<?= $u['id'] ?>" hidden>
-                        <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
-                        <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
-                        <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" hidden>
+                        foreach ($nama as $a) {
+                          foreach ($spp as $u) {?>
+                            <input type="text" class="form-control" name="id_siswa" id="id_siswa" value="<?= $a['id'] ?>" hidden>
+                            <input type="text" class="form-control" name="id_spp" id="id_spp" value="<?= $u['id'] ?>" hidden>
+                            <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
+                            <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
+                            <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" hidden>
 
-                        <?php
+                            <?php
                           }
                         }
                         ?>
@@ -154,7 +154,6 @@
                                 </td>
 
                                 <td>
-                                  -
                                 </td>
 
                                 <td>
@@ -162,20 +161,37 @@
                                   <!-- <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled> -->
                                 </td>
 
-                                <td>
-                                  <!-- <button id="pay-button" class="btn btn-primary" ><input type="submit" value="bayar"></button> -->
-                                  <input type="submit" id="pay-button" name="">
-                                
-                              </td>
 
-                            </tr>
+
+                                <?php
+                              }
+                            }?>
+
+                            <!-- <?php
+                            $row = $transaksi->row_array($this->uri->segment(4)-1);
+                            echo $row['id_spp'];
+                  ?> -->
+
+
+
                             <?php
-                          }
-                        }
-                        ?>
-                      </tbody>
-                      
-                    </table>
+                            $row = $transaksi->row_array($this->uri->segment(4)-1);
+                             if ($row['id_spp'] == $this->uri->segment(4) && $row['id_siswa'] == $this->uri->segment(3) && $row['status_code'] == 200) {?>
+                              <td>
+                                <input type="submit" id="pay-button" name="" disabled>
+                              </td>
+                            <?php } else{ ?>
+                              <td>
+                              <input type="submit" id="pay-button" name="" >
+                            </td>
+                            <?php } ?>
+
+
+                          </tr>
+                        </tbody>
+                        <!-- <?= $transaksi->row($this->uri->segment(4))->id_spp ?> -->
+
+                      </table>
                     </form>
                   </div>
                 </div>
@@ -258,7 +274,7 @@
 
     $.ajax({
       type: 'POST',
-      url: '<?=site_url()?>/siswa/token',
+      url: '<?=site_url()?>siswa/token',
       data: {
         jumlah: jumlah,
         nama: nama,

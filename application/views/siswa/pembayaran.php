@@ -156,12 +156,10 @@
 														<td>
 															<a href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Detail Pembayaran</a>
 														</td>
-
 														<td>
 															<a href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar Bro</a>
 															<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
 														</td>
-
 
 													</tr>
 
