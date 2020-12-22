@@ -97,7 +97,7 @@ class Siswa extends CI_Controller
         $this->load->model('M_spp');
 
         $this->load->model('m_transaksi');
-        $data['transaksi'] = $this->m_transaksi->tampil_data()->row();
+        $data['transaksi'] = $this->m_transaksi->tampil_data()->result_array();
         $data['spp'] = $this->M_spp->tampil_data()->result_array();
         $this->load->view('siswa/pembayaran', $data);
     }
@@ -120,9 +120,7 @@ class Siswa extends CI_Controller
 
         $this->load->model('m_transaksi');
         $this->load->model('m_spp');   
-        
-        
-        $data['transaksi'] = $this->M_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
+        $data['transaksi'] = $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
 
         $this->load->view('siswa/bayar_detail',$data);
     }

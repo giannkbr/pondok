@@ -12,13 +12,11 @@ class M_transaksi extends CI_Model
         $query = $this->db->get_where('transaksi', array('id' => $id))->row();
         return $query;
     }
+
     public function transaksiWhere($where)
     {
-<<<<<<< Updated upstream
-        return $this->db->get('transaksi');
-=======
+    
         $this->db->order_by('transaction_time','asc');
->>>>>>> Stashed changes
         return $this->db->get_where('transaksi', $where);
     }
 
