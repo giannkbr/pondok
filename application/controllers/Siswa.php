@@ -29,10 +29,7 @@ class Siswa extends CI_Controller
         $this->load->view('siswa/index');
     }
 
-    public function registration()
-    {
-        $this->load->view('siswa/registration');
-    }
+    
 
     public function registration_act()
     {

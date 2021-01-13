@@ -118,6 +118,11 @@ class Admin extends CI_Controller
         $this->load->view('admin/pembayaran_siswa', $data);
     }
 
+    public function registration()
+    {
+        $this->load->view('admin/registration');
+    }
+
     // manajemen guru
 
     public function data_guru()
