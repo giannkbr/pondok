@@ -100,190 +100,182 @@
                 <div class="card">
                   <div class="card-body">
                     <h2 class="card-title" style="color: black;">Bayar SPP</h2>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="bg-white p-4"
-                    style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                    <div class="table-responsive">
-                      <form id="payment-form" method="post" action="<?= site_url()?>siswa/finish">
-                        <input type="hidden" name="result_type" id="result-type" value=""></div>
-                        <input type="hidden" name="result_data" id="result-data" value=""></div>
-
-                        <?php
-                        foreach ($nama as $a) {
-                          foreach ($spp as $u) {?>
-                            <input type="text" class="form-control" name="id_siswa" id="id_siswa" value="<?= $a['id'] ?>" hidden>
-                            <input type="text" class="form-control" name="id_spp" id="id_spp" value="<?= $u['id'] ?>" hidden>
-                            <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
-                            <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
-                            <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" hidden>
-
-                            <?php
-                          }
-                        }
-                        ?>
-                        <table id="example" class="table align-items-center table-flush">
-                          <thead class="thead-light">
-                            <tr class="text-center">
-                              <th scope="col">Nama</th>
-                              <th scope="col">Bulan</th>
-                              <th scope="col">Tahun</th>
-                              <th scope="col">Tanggal Pembayaran</th>
-                              <th scope="col">Jumlah Pembayaran</th>
-                              <th scope="col">Aksi</th>
-                            </tr>
-                          </thead>
-
-                          <tbody>
-                            <?php
-                            foreach ($nama as $a) {
-                              foreach ($spp as $u) {?>
-                                <tr class="text-center">
-                                 <td>
-                                  <input type="text" class="form-control" name="nama" id="nama" value="<?= $a['nama'] ?>" hidden>
-                                  <?= $a['nama'] ?>
-                                </td>
-                                <th scope="row">
-                                  <input type="text" name="bulan" id="bulan" value="<?= $u['bulan'] ?>" hidden>
-                                  <?= $u['bulan'] ?>
-                                </th>
-
-                                <td>
-                                  <?= $u['tahun'] ?>
-                                </td>
-
-                                <td>
-                                </td>
-
-                                <td>
-                                  <?= $u['jumlah'] ?>
-                                  <!-- <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled> -->
-                                </td>
-
-
-
-                                <?php
-                              }
-                            }?>
-
-                            <!-- <?php
-                            $row = $transaksi->row_array($this->uri->segment(4)-1);
-                            echo $row['id_spp'];
-                  ?> -->
-
-
-
-                            <?php
-                            $row = $transaksi->row_array($this->uri->segment(4)-1);
-                             if ($row['id_spp'] == $this->uri->segment(4) && $row['id_siswa'] == $this->uri->segment(3) && $row['status_code'] == 200) {?>
-                              <td>
-                                <input type="submit" id="pay-button" name="" disabled>
-                              </td>
-                            <?php } else{ ?>
-                              <td>
-                              <input type="submit" id="pay-button" name="" >
-                            </td>
-                            <?php } ?>
-
-
-                          </tr>
-                        </tbody>
-                        <!-- <?= $transaksi->row($this->uri->segment(4))->id_spp ?> -->
-
-                      </table>
-                    </form>
                   </div>
                 </div>
-              </div>
+                  <div class="row">
+                    <div class="col-md-12">   
+                      <div class="bg-white p-4"
+                      style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
+                      
+                        <form id="payment-form" method="post" action="<?= site_url()?>siswa/finish">
+                          <input type="hidden" name="result_type" id="result-type" value=""></div>
+                          <input type="hidden" name="result_data" id="result-data" value=""></div>
+
+
+                          <div class="table-responsive">
+
+                          <?php
+                          foreach ($nama as $a) {
+                            foreach ($spp as $u) {?>
+                              <input type="text" class="form-control" name="id_siswa" id="id_siswa" value="<?= $a['id'] ?>" hidden>
+                              <input type="text" class="form-control" name="id_spp" id="id_spp" value="<?= $u['id'] ?>" hidden>
+                              <input type="text" class="form-control" name="nama1" id="nama1" value="<?= $a['nama'] ?>" hidden>
+                              <input type="text" class="form-control" name="bulan1" id="bulan1" value="<?= $u['bulan'] ?>" hidden>
+                              <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" hidden>
+
+                              <?php
+                            }
+                          }
+                          ?>
+                          <table id="example" class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                              <tr class="text-center">
+                                <th scope="col">Nama</th>
+                                <th scope="col">Bulan</th>
+                                <th scope="col">Tahun</th>
+                                <th scope="col">Tanggal Pembayaran</th>
+                                <th scope="col">Jumlah Pembayaran</th>
+                                <th scope="col">Aksi</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <?php
+                              foreach ($nama as $a) {
+                                foreach ($spp as $u) {?>
+                                  <tr class="text-center">
+                                   <td>
+                                    <input type="text" class="form-control" name="nama" id="nama" value="<?= $a['nama'] ?>" hidden>
+                                    <?= $a['nama'] ?>
+                                  </td>
+                                  <th scope="row">
+                                    <input type="text" name="bulan" id="bulan" value="<?= $u['bulan'] ?>" hidden>
+                                    <?= $u['bulan'] ?>
+                                  </th>
+
+                                  <td>
+                                    <?= $u['tahun'] ?>
+                                  </td>
+
+                                  <td>
+                                  </td>
+
+                                  <td>
+                                    <?= $u['jumlah'] ?>
+                                    <!-- <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $u['jumlah'] ?>" disabled> -->
+                                  </td>
+                                  <?php
+                                }
+                              }?>
+                              <?php
+                              $row = $transaksi->row_array($this->uri->segment(4)-1);
+                              if ($row['id_spp'] == $this->uri->segment(4) && $row['id_siswa'] == $this->uri->segment(3) && $row['status_code'] == 200) {?>
+                                <td>
+                                  <input type="submit" id="pay-button" name="" disabled>
+                                </td>
+                              <?php } else{ ?>
+                                <td>
+                                  <input type="submit" id="pay-button" name="" >
+                                </td>
+                              <?php } ?>
+
+
+                            </tr>
+                          </tbody>
+
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
-          </section>
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- End Main Content -->
+        <!-- End Main Content -->
 
-    <!-- Start Sweetalert -->
-    <?php if ($this->session->flashdata('gagal')) : ?>
-      <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Gagal Bayar!',
-          text: 'Gagal Mendapatkan Kode!',
-          showConfirmButton: false,
-          timer: 2500
-        })
+        <!-- Start Sweetalert -->
+        <?php if ($this->session->flashdata('gagal')) : ?>
+          <script>
+            Swal.fire({
+              icon: 'success',
+              title: 'Gagal Bayar!',
+              text: 'Gagal Mendapatkan Kode!',
+              showConfirmButton: false,
+              timer: 2500
+            })
 
+          </script>
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('success')) : ?>
+          <script>
+            Swal.fire({
+              icon: 'success',
+              title: 'Berhasil Bayar!',
+              text: 'Silakan bayar dengan kode yg diberikan!',
+              showConfirmButton: false,
+              timer: 2500
+            })
+
+          </script>
+        <?php endif; ?>
+        <!-- End Sweetalert -->
+
+        <!-- Start Footer -->
+        <footer class="main-footer">
+          <div class="text-center">
+            Copyright &copy; 2020 <div class="bullet"></div>
+          </div>
+        </footer>
+        <!-- End Footer -->
+
+        <!-- General JS Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
       </script>
-    <?php endif; ?>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
+    <!-- JS Libraies -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#example').DataTable();
+      });
 
-    <?php if ($this->session->flashdata('success')) : ?>
-      <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Berhasil Bayar!',
-          text: 'Silakan bayar dengan kode yg diberikan!',
-          showConfirmButton: false,
-          timer: 2500
-        })
+    </script>
+    <!-- Template JS File -->
+    <script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
+    <script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
+    <script type="text/javascript">
+      $('#pay-button').click(function (event) {
+        event.preventDefault();
+        $(this).attr("disabled", "disabled");
 
-      </script>
-    <?php endif; ?>
-    <!-- End Sweetalert -->
+        var jumlah = $("#jumlah").val();
+        var nama = $("#nama").val();
+        var bulan = $("#bulan").val();
 
-    <!-- Start Footer -->
-    <footer class="main-footer">
-      <div class="text-center">
-        Copyright &copy; 2020 <div class="bullet"></div>
-      </div>
-    </footer>
-    <!-- End Footer -->
+        $.ajax({
+          type: 'POST',
+          url: '<?=site_url()?>siswa/token',
+          data: {
+            jumlah: jumlah,
+            nama: nama,
+            bulan : bulan
 
-    <!-- General JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
-<!-- JS Libraies -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $('#example').DataTable();
-  });
+          },
+          cache: false,
 
-</script>
-<!-- Template JS File -->
-<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
-<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
-<script type="text/javascript">
-  $('#pay-button').click(function (event) {
-    event.preventDefault();
-    $(this).attr("disabled", "disabled");
-
-    var jumlah = $("#jumlah").val();
-    var nama = $("#nama").val();
-    var bulan = $("#bulan").val();
-
-    $.ajax({
-      type: 'POST',
-      url: '<?=site_url()?>siswa/token',
-      data: {
-        jumlah: jumlah,
-        nama: nama,
-        bulan : bulan
-
-      },
-      cache: false,
-
-      success: function (data) {
+          success: function (data) {
           //location = data;
 
           console.log('token = ' + data);
@@ -319,8 +311,8 @@
           });
         }
       });
-  });
+      });
 
-</script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>

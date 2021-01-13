@@ -27,8 +27,6 @@
 </head>
 
 <body>
-	
-
 	<!-- Start Sidebar -->
 	<div id="app">
 		<div class="main-wrapper">
@@ -55,7 +53,7 @@
 							?></div>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
-							<div class="dropdown-title">Admin - SPPP</div>
+							<div class="dropdown-title">Siswa - SPPP</div>
 							<a href="<?= base_url('welcome/logout') ?>" class="dropdown-item has-icon text-primary">
 								<i class="fas fa-sign-out-alt"></i> Logout
 							</a>
@@ -88,7 +86,7 @@
 								<a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i>
 									<span>Siswa</span></a>
 									<ul class="dropdown-menu">
-										<li><a class="nav-link" href="<?= base_url('siswa/pembayaran') ?>">Pembayaran</a></li>
+										<li><a class="nav-link" href="<?= base_url('siswa/Pembayaran') ?>">Pembayaran</a></li>
 									</ul>
 								</li>
 							</aside>
@@ -133,38 +131,38 @@
 												
 												<?php
 												foreach ($spp as $u) {
-														?>
-														<tr class="text-center">
-															<td><?= $u['id']; ?></td>
+													?>
+													<tr class="text-center">
+														<td><?= $u['id']; ?></td>
 
-															<td >
-																<?= $u['bulan']; ?>
+														<td >
+															<?= $u['bulan']; ?>
 
-																<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
-															</h1>
+															<input type="text" name="nama" class="card-title" style="color: black;" value="" hidden>
+														</h1>
 
-														</td>
+													</td>
 
-														<td>
-															<?= $u['tahun']; ?>
-														</td>
+													<td>
+														<?= $u['tahun']; ?>
+													</td>
 
-														<td  >
-															<?= $u['jumlah']; ?>
-														</td>
+													<td  >
+														<?= $u['jumlah']; ?>
+													</td>
 
-														<td>
-															<a href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Detail Pembayaran</a>
-														</td>
-														<td>
-															<a href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar Bro</a>
-															<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
-														</td>
+													<td>
+														<a href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Detail Pembayaran</a>
+													</td>
+													<td>
+														<a href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar Bro</a>
+														<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
+													</td>
 
-													</tr>
+												</tr>
 
 
-													<?php
+												<?php
 												
 											}
 
@@ -219,14 +217,13 @@
 	</footer>
 	<!-- End Footer -->
 
-	<!-- General JS Scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -235,12 +232,14 @@ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07j
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script>
-	$(document).ready(function () {
-		$('#example').DataTable();
-	});
+  $(document).ready(function () {
+    $('#example').DataTable();
+  });
 
 </script>
 <!-- Template JS File -->
+<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
+<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
 </body>
 
 
