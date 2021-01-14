@@ -45,7 +45,7 @@
 
                                 foreach ($user as $u) {
                                     ?>
-									<h3 align="center" class="card-title" style="color: black;"><?php echo $u->nama ?>
+									<h3 align="center" class="card-title" style="color: black;"><?php echo $u['nama']; ?>
 										</h1>
 										<?php
                                 }
@@ -62,6 +62,7 @@
 														<th scope="col">Bank</th>
 														<th scope="col">Va_Number</th>
 														<th scope="col">Link</th>
+														<th scope="col">Status</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -71,7 +72,7 @@
 															?>
 															<tr class="text-center">
 																<td >
-																	<!-- <?= $t['id_spp']; ?> -->
+															 <?= $t['id_spp']; ?>
 																</td>
 
 																<td><?= $t['order_id']; ?></td>
@@ -100,6 +101,18 @@
 																<td>
 																	<a href="<?= $t['pdf_url']; ?>">Link</a>
 																	
+																</td>
+
+																<td>
+																	<?php if ($t['status_code'] == 200) {
+																	?>
+																	<a href="#" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Success</a>
+
+																	<?php }
+																	else{ ?>
+																		<a href="#" class="btn btn-icon icon-left btn-warning"><i class="fas fa-exclamation-triangle"></i> Pending</a>
+
+																	<?php } ?>
 																</td>
 
 
