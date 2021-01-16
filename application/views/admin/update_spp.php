@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
 
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title>Data SPP - SPP Pondok</title>
+	<title>Update Data Spp - SPP Pondok</title>
 	<!-- General CSS Files -->
 	<link rel="icon" href="<?= base_url('assets/') ?>img/favicon.png" type="image/png">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
 	<!-- Template CSS -->
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
@@ -30,73 +29,70 @@
 			<!-- Main Content -->
 			<div class="main-content">
 				<section class="section">
-					<div class="card" style="width:100%;">
-						<div class="card-body">
-							<h2 class="card-title" style="color: black;">Management Data SPP</h2>
-							<hr>
-							<a href="<?= base_url('admin/add_spp') ?>" class="btn btn-primary">Tambah
-								Data SPP ⭢</a>
+					<div class="">
+						<div class="card" style="width:100%;">
+							<div class="card-body">
+								<h2 class="card-title" style="color: black;">Update Data Spp</h2>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="bg-white p-4"
-								style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px">
-								<div class="table-responsive">
-									<table id="example" class="table align-items-center table-flush">
-										<thead class="thead-light">
-											<tr class="text-center">
-												<th scope="col">Id</th>
-												<th scope="col">Bulan</th>
-												<th scope="col">Tahun</th>
-												<th scope="col">Jumlah</th>
-												<th scope="col">Status</th>
-												<th scope="col">Option</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php
+					<div class="card card-primary">
+						<div class="col-md-12 text-center">
+							<p class="registration-title font-weight-bold display-4 mt-4"
+								style="color:black; font-size: 50px;">
+								Update Data Spp</p>
+							<p style="line-height:-30px;margin-top:-20px;">Silahkan isi data data yang diperlukan
+								dibawah </p>
+							<hr>
+						</div>
+						<?php foreach ($user as $u) { ?>
+						<div class="card-body">
+							<form method="POST" action="<?= base_url('admin/spp_edit') ?>">
 
-                                            foreach ($user as $u) {
-                                            ?>
-											<tr class="text-center">
+								<div class="form-group">
+									<label for="id">Id</label>
+									<input readonly id="id" type="text" class="form-control" value="<?= $u->id ?>"
+										name="id">
+									<?= form_error('id', '<small class="text-danger">', '</small>'); ?>
+									<div class="invalid-feedback">
+									</div>
 
-												<th scope="row">
-													<?php echo $u->id ?>
-												</th>
-
-												<td>
-													<?php echo $u->bulan ?>
-												</td>
-
-												<td>
-													<?php echo $u->tahun ?>
-												</td>
-
-												<td>
-													<?php echo $u->jumlah ?>
-												</td>
-
-
-												<td>
-													<?php echo $u->status ?>
-												</td>
-												<td class="text-center">
-													<a href="<?php echo site_url('admin/update_spp/' . $u->id); ?>"
-														class="btn btn-info">Update ⭢</a>
-
-													<a href="<?php echo site_url('admin/delete_spp/' . $u->id); ?>"
-														class="btn btn-danger remove">Delete ✖</a>
-												</td>
-
-											</tr>
-											<?php
-                                            }
-                                            ?>
-										</tbody>
-									</table>
 								</div>
-							</div>
+
+								<div class="form-group">
+									<label for="email">Bulan</label>
+									<input id="bulan" type="text" value="<?= $u->bulan ?>" class="form-control"
+										name="bulan">
+									<?= form_error('bulan', '<small class="text-danger">', '</small>'); ?>
+									<div class="invalid-feedback">
+									</div>
+								</div>
+
+								<div class="form-group" id="detail">
+									<label for="tahun">Tahun</label>
+									<input id="tahun" type="text" value="<?= $u->tahun ?>" class="form-control"
+										name="tahun">
+									<?= form_error('tahun', '<small class="text-danger">', '</small>'); ?>
+									<div class="invalid-feedback">
+									</div>
+								</div>
+
+								<div class="form-group" id="detail">
+									<label for="jumlah">Jumlah</label>
+									<input id="jumlah" type="text" value="<?= $u->jumlah ?>" class="form-control"
+										name="jumlah">
+									<?= form_error('jumlah', '<small class="text-danger">', '</small>'); ?>
+									<div class="invalid-feedback">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary btn-lg btn-block">
+										Update data ⭢
+									</button>
+								</div>
+							</form>
+							<?php } ?>
 						</div>
 					</div>
 				</section>
@@ -105,45 +101,23 @@
 	</div>
 	<!-- End Main Content -->
 
-	<!-- Start Sweetalert -->
-	<?php if ($this->session->flashdata('success-edit')) : ?>
-	<script>
-		Swal.fire({
-			icon: 'success',
-			title: 'Data Guru Telah Dirubah!',
-			text: 'Selamat data berubah!',
-			showConfirmButton: false,
-			timer: 2500
-		})
-
-	</script>
-	<?php endif; ?>
-
-	<?php if ($this->session->flashdata('user-delete')) : ?>
-	<script>
-		Swal.fire({
-			icon: 'success',
-			title: 'Data SPP Telah Dihapus!',
-			text: 'Selamat data telah Dihapus!',
-			showConfirmButton: false,
-			timer: 2500
-		})
-
-	</script>
-	<?php endif; ?>
-	<!-- End Sweetalert -->
-
 	<!-- Start Footer -->
 	<footer class="main-footer">
 		<div class="text-center">
 			Copyright &copy; 2020 <div class="bullet">
-			</div>
 	</footer>
 	<!-- End Footer -->
 
 	<!-- General JS Scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script>
+		$('.custom-file-input').on('change', function () {
+			let fileName = $(this).val().split('\\').pop();
+			$(this).next('.custom-file-label').addClass("selected").html(fileName);
+		});
+
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>

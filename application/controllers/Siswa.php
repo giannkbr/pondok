@@ -216,6 +216,7 @@ class Siswa extends CI_Controller
 
     $data = [
         'id_siswa' => $_POST['id_siswa'],
+        'bulan' => $_POST['bulan1'],
         'id_spp' => $_POST['id_spp'],
         'order_id' => $result['order_id'],
         'gross_amount' => $result['gross_amount'],

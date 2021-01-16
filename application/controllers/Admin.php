@@ -285,4 +285,37 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('user-delete', 'berhasil');
         redirect('admin/data_spp');
     }
+
+    public function update_spp($id)
+    {
+        $this->load->model('m_spp');
+        $where = array('id' => $id);
+        $data['user'] = $this->m_spp->update_spp($where, 'spp')->result();
+        $this->load->view('admin/update_spp', $data);
+    }
+
+    public function spp_edit()
+    {
+        $this->load->model('m_spp');
+        $id = $this->input->post('id');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        $jumlah = $this->input->post('jumlah');
+
+        $data = array(
+            'id' => $id,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+            'jumlah' => $jumlah,
+
+        );
+
+        $where = array(
+            'id' => $id,
+        );
+
+        $this->m_spp->update_data($where, $data, 'spp');
+        $this->session->set_flashdata('success-edit', 'berhasil');
+        redirect('admin/data_spp');
+    }
 }

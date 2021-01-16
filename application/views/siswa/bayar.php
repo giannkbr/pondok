@@ -70,7 +70,6 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Bulan</th>
                                 <th scope="col">Tahun</th>
-                                <th scope="col">Tanggal Pembayaran</th>
                                 <th scope="col">Jumlah Pembayaran</th>
                                 <th scope="col">Aksi</th>
                               </tr>
@@ -94,8 +93,6 @@
                                     <?= $u['tahun'] ?>
                                   </td>
 
-                                  <td>
-                                  </td>
 
                                   <td>
                                     <?= $u['jumlah'] ?>
