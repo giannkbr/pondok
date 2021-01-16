@@ -17,6 +17,9 @@ class M_guru extends CI_Model
     {
         $this->db->where($where);
         $this->db->delete($table);
+        $this->db->query("SET @num := 0;");
+        $this->db->query("UPDATE guru SET id = @num := (@num+1);");
+        $this->db->query("ALTER TABLE guru AUTO_INCREMENT = 1;");
     }
 
     public function update_guru($where, $table)
