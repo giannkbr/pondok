@@ -72,7 +72,7 @@
 															?>
 															<tr class="text-center">
 																<td >
-															 <?= $t['id_spp']; ?>
+															 <?= $t['bulan']; ?>
 																</td>
 
 																<td><?= $t['order_id']; ?></td>

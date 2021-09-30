@@ -20,8 +20,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
-	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-	data-client-key='SB-Mid-client-jHxslxRXswoIsdzd'></script>
+	<script type="text/javascript" src="https://app.midtrans.com/snap/snap.js" data-client-key='Mid-client-8NTFtmFzD1XUHoqr'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 </head>
@@ -94,10 +93,14 @@
 																	<?= $t['va_number']; ?>
 																</td>
 
+																<?php if ($t['status_code'] == 200) {
+																	?>
 																<td>
+																</td> <?php } else{ ?>
+																	<td>
 																	<a href="<?= $t['pdf_url']; ?>">Link</a>
 																	
-																</td>
+																</td> <?php } ?>
 
 																<td>
 																	<?php if ($t['status_code'] == 200) {

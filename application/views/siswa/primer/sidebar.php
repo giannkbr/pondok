@@ -14,7 +14,7 @@
           <li class="dropdown"><a href="#" data-toggle="dropdown"
             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" style="margin-bottom:4px !important;"
-            src="<?= base_url('assets') ?>/stisla-assets/img/avatar/avatar-2.png"
+            src="<?= base_url('assets/profile_picture/') . $user['image']; ?>"
             class="rounded-circle mr-1 my-auto border-white">
             <div class="d-sm-none d-lg-inline-block" style="font-size:15px;">
               Hello, <?php

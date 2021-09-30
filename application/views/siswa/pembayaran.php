@@ -20,8 +20,8 @@
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
-	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-	data-client-key='SB-Mid-client-jHxslxRXswoIsdzd'></script>
+	<script type="text/javascript" src="https://app.midtrans.com/snap/snap.js"
+	data-client-key='Mid-client-8NTFtmFzD1XUHoqr'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 </head>
@@ -51,6 +51,8 @@
 											?>
 										</h1>
 
+										<div class="text-center"><a class="btn btn-primary" href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Status Pembayaran</a></div>
+
 										<table id="example" class="table align-items-center table-flush">
 
 											<thead class="thead-light">
@@ -59,7 +61,6 @@
 													<th scope="col">Bulan</th>
 													<th scope="col">Tahun</th>
 													<th scope="col">Jumlah Pembayaran</th>
-													<th scope="col">Status</th>
 													<th scope="col">Aksi</th>
 												</tr>
 											</thead>
@@ -86,12 +87,8 @@
 													<td  >
 														<?= $u['jumlah']; ?>
 													</td>
-
 													<td>
-														<a href="<?= base_url('siswa/bayar_detail/') . $data['siswa']['id']; ?>">Detail Pembayaran</a>
-													</td>
-													<td>
-														<a href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar</a>
+														<a class="btn btn-primary" href="<?= base_url('siswa/bayar/') . $data['siswa']['id'].('/').$u['id']; ?>">Bayar</a>
 														<!-- <button id="pay-button" class="btn btn-primary" >Bayar Bro</button> -->
 													</td>
 

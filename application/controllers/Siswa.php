@@ -9,7 +9,7 @@ class Siswa extends CI_Controller
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: PUT, GET, POST");
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-        $params = array('server_key' => 'SB-Mid-server-60VoTMtSEEBoCo_qDoOsWAPM', 'production' => false);
+        $params = array('server_key' => 'Mid-server-hR-clgDGpAg1Zk2yQ5vemVYn', 'production' => true);
         $this->load->library('form_validation');
         $this->load->library('midtrans');
         $this->midtrans->config($params);
@@ -23,65 +23,17 @@ class Siswa extends CI_Controller
 
     public function index()
     {
+        $this->load->model('m_siswa');
         $data['user'] = $this->db->get_where('siswa', ['email' =>
             $this->session->userdata('email')])->row_array();
+        $data['siswa'] = $this->m_siswa->tampil_data()->result_array();
 
-        $this->load->view('siswa/index');
+        $this->load->view('siswa/index',$data);
     }
 
     
 
-    public function registration_act()
-    {
-        $this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[4]', [
-            'required' => 'Harap isi kolom username.',
-            'min_length' => 'Nama terlalu pendek.',
-        ]);
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[siswa.email]', [
-            'is_unique' => 'Email ini telah digunakan!',
-            'required' => 'Harap isi kolom email.',
-            'valid_email' => 'Masukan email yang valid.',
-        ]);
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]|matches[retype_password]', [
-            'required' => 'Harap isi kolom Password.',
-            'matches' => 'Password tidak sama!',
-            'min_length' => 'Password terlalu pendek',
-        ]);
-        $this->form_validation->set_rules('retype_password', 'Password', 'required|trim|matches[password]', [
-            'matches' => 'Password tidak sama!',
-        ]);
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('siswa/registration');
-        } else {
-            $email = $this->input->post('email', true);
-            $data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'email' => htmlspecialchars($email),
-                'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'is_active' => 1,
-                'date_created' => time(),
-            ];
-
-            //siapkan token
-
-            // $token = base64_encode(random_bytes(32));
-            // $user_token = [
-            //     'email' => $email,
-            //     'token' => $token,
-            //     'date_created' => time(),
-            // ];
-
-            $this->db->insert('siswa', $data);
-            // $this->db->insert('token', $user_token);
-
-            // $this->_sendEmail($token, 'verify');
-
-            $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('admin'));
-        }
-    }
+    
 
     public function pembayaran()
     {
@@ -105,9 +57,11 @@ class Siswa extends CI_Controller
         $this->load->model('m_spp');
         $this->load->model('m_siswa');
         $this->load->model('m_transaksi');
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
+            $this->session->userdata('email')])->row_array();
         $data['spp'] = $this->m_spp->sppWhere(['id' => $this->uri->segment(4)])->result_array();
         $data['nama'] = $this->m_siswa->siswaWhere(['id' => $this->uri->segment(3)])->result_array();
-        $data['transaksi'] =  $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)]);
+        $data['transaksi'] =  $this->m_transaksi->transaksiWhere(['id' => $this->uri->segment(3)]);
 
         $this->load->view('siswa/bayar',$data);       
     }
@@ -116,7 +70,9 @@ class Siswa extends CI_Controller
     {
 
         $this->load->model('m_transaksi');
-        $this->load->model('m_spp');   
+        $this->load->model('m_spp'); 
+        $data['user'] = $this->db->get_where('siswa', ['email' =>
+            $this->session->userdata('email')])->row_array();  
         $data['transaksi'] = $this->m_transaksi->transaksiWhere(['id_siswa' => $this->uri->segment(3)])->result_array();
 
         $this->load->view('siswa/bayar_detail',$data);
