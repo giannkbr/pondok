@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" <!--
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" 
         Template CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
@@ -29,36 +29,14 @@
                         <h1 style="font-size: 27px; letter-spacing:-0.5px; color:black;">Dashboard</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                            <div class="card card-statistic-1">
-                                <div class="card-icon bg-primary">
-                                    <i class="far fa-user"></i>
-                                </div>
-                                <div class="card-wrap">
-                                    <div class="card-header">
-                                        <h4>Siswa</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <?php echo $this->db->count_all('siswa'); ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                            <div class="card card-statistic-1">
-                                <div class="card-icon bg-danger">
-                                    <i class="fas fa-chalkboard-teacher"></i>
-                                </div>
-                                <div class="card-wrap">
-                                    <div class="card-header">
-                                        <h4>Guru</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <?php echo $this->db->count_all('guru'); ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card">
+              <div class="card-header">
+                <h3>Pondok Pesantren</h3>
+              </div>
+              <div class="card-body">
+                <p>Pesantren adalah sebuah pendidikan tradisional yang para siswanya tinggal bersama dan belajar di bawah bimbingan guru yang lebih dikenal dengan sebutan kiai dan mempunyai asrama untuk tempat menginap santri. Santri tersebut berada dalam kompleks yang juga menyediakan masjid untuk beribadah, ruang untuk belajar, dan kegiatan keagamaan lainnya. Kompleks ini biasanya dikelilingi oleh tembok untuk dapat mengawasi keluar masuknya para santri sesuai dengan peraturan yang berlaku. Pondok Pesantren merupakan dua istilah yang menunjukkan satu pengertian. Pesantren menurut pengertian dasarnya adalah tempat belajar para santri, sedangkan pondok berarti rumah atau tempat tinggal sederhana terbuat dari bambu. Di samping itu, kata pondok mungkin berasal dari Bahasa Arab Funduq yang berarti asrama atau hotel. Di Jawa termasuk Sunda dan Madura umumnya digunakan istilah pondok dan pesantren, sedang di Aceh dikenal dengan Istilah dayah atau rangkang atau menuasa, sedangkan di Minangkabau disebut surau. Pesantren juga dapat dipahami sebagai lembaga pendidikan dan pengajaran agama, umumnya dengan cara nonklasikal, di mana seorang kiai mengajarkan ilmu agama Islam kepada santri-santri berdasarkan kitab-kitab yang ditulis dalam bahasa Arab oleh Ulama Abad pertengahan, dan para santrinya biasanya tinggal di pondok (asrama) dalam pesantren tersebut.</p>
+              </div>
+            </div>
                     </div>
                 </section>
             </div>

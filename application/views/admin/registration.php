@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form method="POST" action="<?= base_url('siswa/registration_act') ?>">
+                            <form method="POST" action="<?= base_url('admin/registration_act') ?>">
                                 <div id="" class="form-group">
                                     <label for="nip">Nama Lengkap</label>
                                     <input type="text" autocomplete="off" class="form-control effect-9" name="nama" id="nama_lengkap" value="<?= set_value('nama'); ?>">

@@ -26,7 +26,7 @@ class Welcome extends CI_Controller
             $this->load->library('user_agent');
             redirect($this->agent->referrer());
         } else {
-            //validasi sukses
+            //validasi sukses 
             $this->login();
         }
     }

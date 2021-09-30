@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key='SB-Mid-client-jHxslxRXswoIsdzd'></script>
+  <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js" data-client-key='Mid-client-8NTFtmFzD1XUHoqr'></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
   <meta charset="UTF-8">
@@ -45,8 +45,8 @@
                       style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
                       
                         <form id="payment-form" method="post" action="<?= site_url()?>siswa/finish">
-                          <input type="hidden" name="result_type" id="result-type" value=""></div>
-                          <input type="hidden" name="result_data" id="result-data" value=""></div>
+                          <input type="hidden" name="result_type" id="result-type" value="">
+                          <input type="hidden" name="result_data" id="result-data" value="">
 
 
                           <div class="table-responsive">
